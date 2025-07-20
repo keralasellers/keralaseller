@@ -51,7 +51,7 @@ export default function ComingSoonPage() {
 
 
   const images = [
-        // { src: "/T Shirts (4).png", alt: "Image 3" },
+    // { src: "/T Shirts (4).png", alt: "Image 3" },
     // { src: "/T Shirts (5).png", alt: "Image 3" },
     { src: "/T Shirts (7).png", alt: "Image 3" },
 
@@ -98,18 +98,19 @@ export default function ComingSoonPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    const form = new FormData()
-    form.append("name", formData.name)
-    form.append("whatsapp", formData.whatsapp)
-    form.append("businessName", formData.businessName)
-    form.append("formGoogleSheetName", "earlyaccess")
-    form.append("formDataNameOrder", JSON.stringify(["name", "whatsapp", "businessName"]))
-    form.append("formGoogleSendEmail", "aromalvijayan448@gmail.com")
-
     try {
       const response = await fetch("/api/submit", {
         method: "POST",
-        body: form,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          whatsapp: formData.whatsapp,
+          businessName: formData.businessName,
+          formGoogleSheetName: "earlyaccess",
+          formGoogleSendEmail: "aromalvijayan448@gmail.com",
+        }),
       })
 
       if (response.ok) {
@@ -126,6 +127,7 @@ export default function ComingSoonPage() {
       alert("Network error. Please try again later.")
     }
   }
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -197,70 +199,70 @@ export default function ComingSoonPage() {
             </Button>
 
             {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-          <div className="bg-white rounded-xl p-8 w-full max-w-lg relative">
-            <button
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-              onClick={() => {
-                setIsModalOpen(false)
-                setIsSubmitted(false)
-              }}
-            >
-              <X className="w-6 h-6" />
-            </button>
+              <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+                <div className="bg-white rounded-xl p-8 w-full max-w-lg relative">
+                  <button
+                    className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                    onClick={() => {
+                      setIsModalOpen(false)
+                      setIsSubmitted(false)
+                    }}
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
 
-            {isSubmitted ? (
-              <div className="text-center py-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Welcome to the Family! 🎉</h3>
-                <p className="text-gray-600 mb-4">
-                  We'll notify you as soon as KeralaSellers.in launches
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <Input
-                    type="text"
-                    name="name"
-                    placeholder="Your Full Name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="h-12"
-                  />
-                  <Input
-                    type="tel"
-                    name="whatsapp"
-                    placeholder="WhatsApp Number"
-                    value={formData.whatsapp}
-                    onChange={handleInputChange}
-                    required
-                    className="h-12"
-                  />
+                  {isSubmitted ? (
+                    <div className="text-center py-8">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">Welcome to the Family! 🎉</h3>
+                      <p className="text-gray-600 mb-4">
+                        We'll notify you as soon as KeralaSellers.in launches
+                      </p>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <Input
+                          type="text"
+                          name="name"
+                          placeholder="Your Full Name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                          className="h-12"
+                        />
+                        <Input
+                          type="tel"
+                          name="whatsapp"
+                          placeholder="WhatsApp Number"
+                          value={formData.whatsapp}
+                          onChange={handleInputChange}
+                          required
+                          className="h-12"
+                        />
+                      </div>
+                      <Input
+                        type="text"
+                        name="businessName"
+                        placeholder="Your Business Name (Optional)"
+                        value={formData.businessName}
+                        onChange={handleInputChange}
+                        className="h-12"
+                      />
+                      <Button
+                        type="submit"
+                        className="w-full bg-green-600 hover:bg-green-700 text-white h-12 text-lg font-semibold rounded-lg"
+                      >
+                        Join the Early Access List
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                      </Button>
+                      <p className="text-xs text-gray-500 text-center">
+                        By joining, you agree to receive updates about KeralaSellers.in.
+                      </p>
+                    </form>
+                  )}
                 </div>
-                <Input
-                  type="text"
-                  name="businessName"
-                  placeholder="Your Business Name (Optional)"
-                  value={formData.businessName}
-                  onChange={handleInputChange}
-                  className="h-12"
-                />
-                <Button
-                  type="submit"
-                  className="w-full bg-green-600 hover:bg-green-700 text-white h-12 text-lg font-semibold rounded-lg"
-                >
-                  Join the Early Access List
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <p className="text-xs text-gray-500 text-center">
-                  By joining, you agree to receive updates about KeralaSellers.in.
-                </p>
-              </form>
+              </div>
             )}
-          </div>
-        </div>
-      )}
             {/* <Button
               variant="outline"
               size="lg"
