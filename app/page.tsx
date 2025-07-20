@@ -3,8 +3,7 @@
 import type React from "react"
 import type { HTMLInputElement } from "react"
 import { User } from "lucide-react"
-
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -22,6 +21,7 @@ import {
   CheckIcon,
   Instagram,
   MessageCircle,
+  Phone,
   Mail,
   Leaf,
   Star,
@@ -41,14 +41,19 @@ import {
   Play,
   Plus,
   Minus,
+  X,
 } from "lucide-react"
 import { SlideCarousel } from "@/components/BannerCarousel"
 
 export default function ComingSoonPage() {
+
+
+
+
   const images = [
-        { src: "/T Shirts (2).png", alt: "Image 3" },
-        { src: "/T Shirts (3).png", alt: "Image 3" },
-        { src: "/T Shirts.png", alt: "Image 3" },
+    { src: "/T Shirts (2).png", alt: "Image 3" },
+    { src: "/T Shirts (3).png", alt: "Image 3" },
+    { src: "/T Shirts.png", alt: "Image 3" },
 
 
 
@@ -74,32 +79,61 @@ export default function ComingSoonPage() {
       colorClass: "text-purple-500",
     },
   ]
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   const [formData, setFormData] = useState({
     name: "",
     whatsapp: "",
     businessName: "",
   })
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [openFaq, setOpenFaq] = useState<number | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    setIsSubmitted(true)
-    setTimeout(() => setIsSubmitted(false), 3000)
+
+    const form = new FormData()
+    form.append("name", formData.name)
+    form.append("whatsapp", formData.whatsapp)
+    form.append("businessName", formData.businessName)
+    form.append("formGoogleSheetName", "earlyaccess")
+    form.append("formDataNameOrder", JSON.stringify(["name", "whatsapp", "businessName"]))
+    form.append("formGoogleSendEmail", "aromalvijayan448@gmail.com")
+
+    try {
+      const response = await fetch("/api/submit", {
+        method: "POST",
+        body: form,
+      })
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        setFormData({
+          name: "",
+          whatsapp: "",
+          businessName: "",
+        })
+      } else {
+        alert("Something went wrong. Please try again.")
+      }
+    } catch (error) {
+      alert("Network error. Please try again later.")
+    }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
   }
+
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index)
   }
+
+
 
   return (
     <div className="min-h-screen bg-[#fdfff0]">
@@ -114,10 +148,10 @@ export default function ComingSoonPage() {
               <Leaf className="w-3 h-3 mr-1" />
               Coming Soon
             </Badge>
-<Badge variant="secondary" className="hidden md:inline-flex bg-green-100 text-green-800 border-green-200">
-  <MailCheck className="w-3 h-3 mr-1" />
-  adarsh@keralasellers.in
-</Badge>
+            <Badge variant="secondary" className="hidden md:inline-flex bg-green-100 text-green-800 border-green-200">
+              <MailCheck className="w-3 h-3 mr-1" />
+              adarsh@keralasellers.in
+            </Badge>
 
           </div>
         </div>
@@ -125,7 +159,7 @@ export default function ComingSoonPage() {
 
       {/* Hero Section */}
       {/* <div className="min-h-screen bg-gray-100"> */}
-        <SlideCarousel images={images} autoPlay={true} interval={4000} />
+      <SlideCarousel images={images} autoPlay={true} interval={4000} />
       {/* </div> */}
       <section className="container mx-auto px-4  md:py-20">
         <div className="text-center max-w-4xl mx-auto">
@@ -145,17 +179,84 @@ export default function ComingSoonPage() {
 
           <p className="text-xl md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Be among the first Kerala resellers to launch your <span className="font-semibold text-green-600">Digital Store</span>.
-             Early access members get free setup assistance and priority support
+            Early access members get free setup assistance and priority support
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <Button
               size="lg"
+              onClick={() => setIsModalOpen(true)}
               className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Join Early Access
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
+
+            {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+          <div className="bg-white rounded-xl p-8 w-full max-w-lg relative">
+            <button
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              onClick={() => {
+                setIsModalOpen(false)
+                setIsSubmitted(false)
+              }}
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {isSubmitted ? (
+              <div className="text-center py-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Welcome to the Family! 🎉</h3>
+                <p className="text-gray-600 mb-4">
+                  We'll notify you as soon as KeralaSellers.in launches
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <Input
+                    type="text"
+                    name="name"
+                    placeholder="Your Full Name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className="h-12"
+                  />
+                  <Input
+                    type="tel"
+                    name="whatsapp"
+                    placeholder="WhatsApp Number"
+                    value={formData.whatsapp}
+                    onChange={handleInputChange}
+                    required
+                    className="h-12"
+                  />
+                </div>
+                <Input
+                  type="text"
+                  name="businessName"
+                  placeholder="Your Business Name (Optional)"
+                  value={formData.businessName}
+                  onChange={handleInputChange}
+                  className="h-12"
+                />
+                <Button
+                  type="submit"
+                  className="w-full bg-green-600 hover:bg-green-700 text-white h-12 text-lg font-semibold rounded-lg"
+                >
+                  Join the Early Access List
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+                <p className="text-xs text-gray-500 text-center">
+                  By joining, you agree to receive updates about KeralaSellers.in.
+                </p>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
             {/* <Button
               variant="outline"
               size="lg"
@@ -166,7 +267,7 @@ export default function ComingSoonPage() {
             </Button> */}
           </div>
 
-         
+
         </div>
       </section>
 
@@ -191,7 +292,7 @@ export default function ComingSoonPage() {
       </section>
 
       {/* Features Section */}
-      <section className="container mx-auto px-4 py-16">
+      <section id="features" className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Everything You Need to Succeed</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -271,7 +372,7 @@ export default function ComingSoonPage() {
       </section>
 
       {/* How It Works Section */}
-      <section className="bg-white/50 backdrop-blur-sm py-16">
+      <section id="how-it-works" className="bg-white/50 backdrop-blur-sm py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
@@ -561,117 +662,45 @@ export default function ComingSoonPage() {
       {/* {pricingsection} */}
 
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50 dark:bg-gray-900">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Simple & Affordable Plans</h2>
-            <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-              Choose the perfect plan for your business needs.
-            </p>
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Simple & Affordable Plans</h2>
+              <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                Choose the perfect plan for your business needs.
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 lg:grid-cols-3 lg:gap-12">
-          {pricingPlans.map((plan, index) => (
-            <Card
-              key={index}
-              className="flex flex-col justify-between h-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-            >
-              <CardHeader>
-                <CardTitle className={`text-2xl font-bold ${plan.colorClass}`}>{plan.name}</CardTitle>
-                <CardDescription className="text-4xl font-bold mt-2">{plan.price}</CardDescription>
-              </CardHeader>
-              <CardContent className="grid gap-2">
-                <ul className="grid gap-2 text-gray-500 dark:text-gray-400">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center gap-2">
-                      <CheckIcon className="h-4 w-4 text-green-500" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-
-      {/* FAQ Section */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-          <p className="text-lg text-gray-600">Everything you need to know about KeralaSellers.in</p>
-        </div>
-
-        <div className="max-w-3xl mx-auto">
-          {[
-            {
-              question: "Is KeralaSellers.in really commission-free?",
-              answer:
-                "Yes! We don't charge any commission on your sales. You keep 100% of your profits. We may introduce optional premium features in the future, but basic selling will always be free.",
-            },
-            {
-              question: "Do I need technical knowledge to use this platform?",
-              answer:
-                "Not at all! If you can use WhatsApp, you can use our platform. We've designed it to be as simple as possible, with Malayalam language support and video tutorials.",
-            },
-            {
-              question: "How do customers pay for products?",
-              answer:
-                "We'll integrate with popular payment methods like UPI, cards, and cash on delivery. Customers can also contact you directly through WhatsApp for payment arrangements.",
-            },
-            {
-              question: "Can I sell products outside Kerala?",
-              answer:
-                "While we're focused on Kerala businesses, you can sell to customers anywhere in India. We'll help you manage shipping and delivery across states.",
-            },
-            {
-              question: "What types of products can I sell?",
-              answer:
-                "You can sell almost anything legal - from handmade crafts to electronics, clothing to food items. We'll provide category-specific tools to help you showcase your products better.",
-            },
-            {
-              question: "How is this different from other platforms?",
-              answer:
-                "We're built specifically for Kerala businesses with local language support, no commissions, WhatsApp integration, and understanding of local business practices. Plus, we're made right here in Kerala!",
-            },
-            {
-              question: "When will the platform launch?",
-              answer:
-                "We're planning a beta launch in March 2025, followed by public launch in April 2025. Join our waitlist to be among the first to get access!",
-            },
-            {
-              question: "Will there be customer support in Malayalam?",
-              answer:
-                "Yes! Our support team will be available in both Malayalam and English. We understand the importance of communicating in your preferred language.",
-            },
-          ].map((faq, index) => (
-            <Card key={index} className="mb-4 border-0 shadow-lg bg-white">
-              <CardContent className="p-0">
-                <button
-                  onClick={() => toggleFaq(index)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
-                >
-                  <h3 className="text-lg font-semibold text-gray-900 pr-4">{faq.question}</h3>
-                  {openFaq === index ? (
-                    <Minus className="w-5 h-5 text-green-600 flex-shrink-0" />
-                  ) : (
-                    <Plus className="w-5 h-5 text-green-600 flex-shrink-0" />
-                  )}
-                </button>
-                {openFaq === index && (
-                  <div className="px-6 pb-6">
-                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          ))}
+          <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 lg:grid-cols-3 lg:gap-12">
+            {pricingPlans.map((plan, index) => (
+              <Card
+                key={index}
+                className="flex flex-col justify-between h-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                <CardHeader>
+                  <CardTitle className={`text-2xl font-bold ${plan.colorClass}`}>{plan.name}</CardTitle>
+                  <CardDescription className="text-4xl font-bold mt-2">{plan.price}</CardDescription>
+                </CardHeader>
+                <CardContent className="grid gap-2">
+                  <ul className="grid gap-2 text-gray-500 dark:text-gray-400">
+                    {plan.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center gap-2">
+                        <CheckIcon className="h-4 w-4 text-green-500" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
+
+
       {/* About Founders Section */}
-      <section className="container mx-auto px-4 py-16">
+      <section id="founders" className="container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet the Founders</h2>
@@ -780,6 +809,80 @@ export default function ComingSoonPage() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section id="faq" className="container mx-auto px-4 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+          <p className="text-lg text-gray-600">Everything you need to know about KeralaSellers.in</p>
+        </div>
+
+        <div className="max-w-3xl mx-auto">
+          {[
+            {
+              question: "Is KeralaSellers.in really commission-free?",
+              answer:
+                "Yes! We don't charge any commission on your sales. You keep 100% of your profits. We may introduce optional premium features in the future, but basic selling will always be free.",
+            },
+            {
+              question: "Do I need technical knowledge to use this platform?",
+              answer:
+                "Not at all! If you can use WhatsApp, you can use our platform. We've designed it to be as simple as possible, with Malayalam language support and video tutorials.",
+            },
+            {
+              question: "How do customers pay for products?",
+              answer:
+                "We'll integrate with popular payment methods like UPI, cards, and cash on delivery. Customers can also contact you directly through WhatsApp for payment arrangements.",
+            },
+            {
+              question: "Can I sell products outside Kerala?",
+              answer:
+                "While we're focused on Kerala businesses, you can sell to customers anywhere in India. We'll help you manage shipping and delivery across states.",
+            },
+            {
+              question: "What types of products can I sell?",
+              answer:
+                "You can sell almost anything legal - from handmade crafts to electronics, clothing to food items. We'll provide category-specific tools to help you showcase your products better.",
+            },
+            {
+              question: "How is this different from other platforms?",
+              answer:
+                "We're built specifically for Kerala businesses with local language support, no commissions, WhatsApp integration, and understanding of local business practices. Plus, we're made right here in Kerala!",
+            },
+            {
+              question: "When will the platform launch?",
+              answer:
+                "We're planning a beta launch in March 2025, followed by public launch in April 2025. Join our waitlist to be among the first to get access!",
+            },
+            {
+              question: "Will there be customer support in Malayalam?",
+              answer:
+                "Yes! Our support team will be available in both Malayalam and English. We understand the importance of communicating in your preferred language.",
+            },
+          ].map((faq, index) => (
+            <Card key={index} className="mb-4 border-0 shadow-lg bg-white">
+              <CardContent className="p-0">
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 pr-4">{faq.question}</h3>
+                  {openFaq === index ? (
+                    <Minus className="w-5 h-5 text-green-600 flex-shrink-0" />
+                  ) : (
+                    <Plus className="w-5 h-5 text-green-600 flex-shrink-0" />
+                  )}
+                </button>
+                {openFaq === index && (
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
       {/* Waitlist Section */}
       <section className="bg-gradient-to-r from-green-600 to-green-700 py-16">
         <div className="container mx-auto px-4">
@@ -858,20 +961,10 @@ export default function ComingSoonPage() {
               <div className="flex justify-center space-x-4 text-green-200">
                 <div className="flex items-center space-x-1">
                   <MapPin className="w-4 h-4" />
-                  <span className="text-sm">Kochi</span>
+                  <span className="text-sm">Trivandrum</span>
                 </div>
-                <div className="flex items-center space-x-1">
-                  <MapPin className="w-4 h-4" />
-                  <span className="text-sm">Kozhikode</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <MapPin className="w-4 h-4" />
-                  <span className="text-sm">Thrissur</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <MapPin className="w-4 h-4" />
-                  <span className="text-sm">Kottayam</span>
-                </div>
+
+
               </div>
             </div>
           </div>
@@ -896,13 +989,13 @@ export default function ComingSoonPage() {
                 Empowering Kerala's resellers with commission-free online stores. Built by Keralites, for Keralites.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://www.instagram.com/kerala_sellers" target="blank" className="text-gray-400 hover:text-white transition-colors">
                   <Instagram className="w-6 h-6" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <MessageCircle className="w-6 h-6" />
+                <a href="tel:+919400355185" className="text-gray-400 hover:text-white transition-colors">
+                  <Phone className="w-6 h-6" />
                 </a>
-                <a href="mailto:adarsh@keralasellers.in" className="text-gray-400 hover:text-white transition-colors">
+                <a href="mailto:keralasellers.in@gmail.com" className="text-gray-400 hover:text-white transition-colors">
                   <Mail className="w-6 h-6" />
                 </a>
               </div>
@@ -939,10 +1032,11 @@ export default function ComingSoonPage() {
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <a href="mailto:adarsh@keralasellers.in" className="hover:text-white transition-colors">
-                    adarsh@keralasellers.in
+                    keralasellers.in@gmail.com
                   </a>
                 </li>
-                <li>WhatsApp Support</li>
+                <li>+919400355185</li>
+                <li>+918281783052</li>
                 <li>Kerala, India</li>
               </ul>
             </div>
