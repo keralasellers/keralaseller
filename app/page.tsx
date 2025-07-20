@@ -51,6 +51,10 @@ export default function ComingSoonPage() {
 
 
   const images = [
+        { src: "/T Shirts (4).png", alt: "Image 3" },
+    { src: "/T Shirts (5).png", alt: "Image 3" },
+    { src: "/T Shirts (6).png", alt: "Image 3" },
+
     { src: "/T Shirts (2).png", alt: "Image 3" },
     { src: "/T Shirts (3).png", alt: "Image 3" },
     { src: "/T Shirts.png", alt: "Image 3" },
@@ -273,7 +277,7 @@ export default function ComingSoonPage() {
 
       {/* Stats Section */}
       <section className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
           {[
             { number: "0%", label: "Commission Fee", icon: <CreditCard className="w-6 h-6" /> },
             { number: "24/7", label: "Support Available", icon: <Clock className="w-6 h-6" /> },
