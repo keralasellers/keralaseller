@@ -8,8 +8,6 @@ export async function POST(req: Request) {
     const sheetName = formData.get("formGoogleSheetName") as string
     const email = formData.get("formGoogleSendEmail") as string
 
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbxHGRDkAxO6lDR2WqrhlFxHsRspbbWBqrVpGhBk8WIAI6640UwlqEu89Up3-wpgPvACgw/exec"
-
     const body = new URLSearchParams({
       name,
       whatsapp,
@@ -18,6 +16,8 @@ export async function POST(req: Request) {
       formDataNameOrder: JSON.stringify(["name", "whatsapp", "businessName"]),
       formGoogleSendEmail: email,
     })
+
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbxHGRDkAxO6lDR2WqrhlFxHsRspbbWBqrVpGhBk8WIAI6640UwlqEu89Up3-wpgPvACgw/exec"
 
     const googleRes = await fetch(scriptUrl, {
       method: "POST",
