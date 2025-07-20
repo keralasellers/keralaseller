@@ -174,10 +174,11 @@ export default function ComingSoonPage() {
       <section className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {[
-            // { number: "500+", label: "Businesses on Waitlist", icon: <Users className="w-6 h-6" /> },
             { number: "0%", label: "Commission Fee", icon: <CreditCard className="w-6 h-6" /> },
             { number: "24/7", label: "Support Available", icon: <Clock className="w-6 h-6" /> },
             { number: "100%", label: "Kerala Made", icon: <MapPin className="w-6 h-6" /> },
+            { number: "400%", label: "Businesses on Waitlist", icon: <Users className="w-6 h-6" /> },
+
           ].map((stat, index) => (
             <div key={index} className="text-center">
               <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 text-green-600 rounded-full mb-3">
