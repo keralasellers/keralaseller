@@ -14,7 +14,7 @@ interface SlideCarouselProps {
   interval?: number
 }
 
-export function SlideCarousel({ images, autoPlay = false, interval = 3000 }: SlideCarouselProps) {
+export function SlideCarousel({ images, autoPlay = false, interval = 4000 }: SlideCarouselProps) {
   const [currentSlide, setCurrentSlide] = React.useState(0)
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null)
 
@@ -87,7 +87,7 @@ export function SlideCarousel({ images, autoPlay = false, interval = 3000 }: Sli
         <ChevronRight className="h-6 w-6 text-gray-800" />
       </Button> */}
       {/* Pagination Dots */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+      {/* <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
         {images.map((_, index) => (
           <button
             key={index}
@@ -98,7 +98,7 @@ export function SlideCarousel({ images, autoPlay = false, interval = 3000 }: Sli
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -104,7 +104,7 @@ export default function ComingSoonPage() {
   return (
     <div className="min-h-screen bg-[#fdfff0]">
       {/* Header */}
-      <header className="container mx-auto px-4 py-1">
+      <header className="container mx-auto px-4 pt-5">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <Image src="/k-logo-removebg-preview.png" alt="KeralaSellers Logo" width={120} height={60} className="h-12 w-auto" />
@@ -126,7 +126,7 @@ export default function ComingSoonPage() {
       {/* <div className="min-h-screen bg-gray-100"> */}
         <SlideCarousel images={images} autoPlay={true} interval={4000} />
       {/* </div> */}
-      <section className="container mx-auto px-4 py-12 md:py-20">
+      <section className="container mx-auto px-4  md:py-20">
         <div className="text-center max-w-4xl mx-auto">
           {/* <div className="inline-flex items-center space-x-2 bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
             <span>🌴</span>
