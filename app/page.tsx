@@ -134,7 +134,7 @@ export default function ComingSoonPage() {
             <span>Made for Kerala • Launching Q2 2025</span>
           </div> */}
 
-          <h1 className="text-xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-3xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Empowering Kerala's{" "}
             <span className="text-green-600 relative">
               Resellers
