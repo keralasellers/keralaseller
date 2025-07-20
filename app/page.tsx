@@ -46,9 +46,12 @@ import { SlideCarousel } from "@/components/BannerCarousel"
 
 export default function ComingSoonPage() {
   const images = [
-    { src: "/hangover-sale-icon-banners_9a4da4a7-080d-4fd5-b66f-c16a623a7947.webp", alt: "Image 1" },
-    { src: "/hangover-sale-icon-banners_2.webp", alt: "Image 2" },
-    { src: "/T Shirts.png", alt: "Image 3" },
+        { src: "/T Shirts.png", alt: "Image 3" },
+        { src: "/T Shirts (2).png", alt: "Image 3" },
+        { src: "/T Shirts (3).png", alt: "Image 3" },
+
+
+
   ]
 
   const pricingPlans = [
