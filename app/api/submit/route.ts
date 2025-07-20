@@ -1,13 +1,8 @@
-// app/api/submit/route.ts
 export async function POST(req: Request) {
   try {
-    const formData = await req.formData()
+    const formData = await req.json()
 
-    const name = formData.get("name") as string
-    const whatsapp = formData.get("whatsapp") as string
-    const businessName = formData.get("businessName") as string
-    const sheetName = formData.get("formGoogleSheetName") as string
-    const email = formData.get("formGoogleSendEmail") as string
+    const { name, whatsapp, businessName, formGoogleSheetName: sheetName, formGoogleSendEmail: email } = formData
 
     const scriptUrl = "https://script.google.com/macros/s/AKfycbxHGRDkAxO6lDR2WqrhlFxHsRspbbWBqrVpGhBk8WIAI6640UwlqEu89Up3-wpgPvACgw/exec"
 

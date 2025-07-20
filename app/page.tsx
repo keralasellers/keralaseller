@@ -95,38 +95,41 @@ export default function ComingSoonPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
 
-    try {
-      const response = await fetch("/api/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          whatsapp: formData.whatsapp,
-          businessName: formData.businessName,
-          formGoogleSheetName: "earlyaccess",
-          formGoogleSendEmail: "aromalvijayan448@gmail.com",
-        }),
-      })
-
-      if (response.ok) {
-        setIsSubmitted(true)
-        setFormData({
-          name: "",
-          whatsapp: "",
-          businessName: "",
-        })
-      } else {
-        alert("Something went wrong. Please try again.")
-      }
-    } catch (error) {
-      alert("Network error. Please try again later.")
-    }
+  const jsonData = {
+    name: formData.name,
+    whatsapp: formData.whatsapp,
+    businessName: formData.businessName,
+    formGoogleSheetName: "earlyaccess",
+    formGoogleSendEmail: "aromalvijayan448@gmail.com",
   }
+
+  try {
+    const response = await fetch("/api/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", // ✅ Send JSON
+      },
+      body: JSON.stringify(jsonData),
+    })
+
+    if (response.ok) {
+      setIsSubmitted(true)
+      setFormData({
+        name: "",
+        whatsapp: "",
+        businessName: "",
+      })
+    } else {
+      alert("Something went wrong. Please try again.")
+    }
+  } catch (error) {
+    alert("Network error. Please try again later.")
+  }
+}
+
 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
