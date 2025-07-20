@@ -8,7 +8,7 @@ import { useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import {
   Smartphone,
@@ -19,6 +19,7 @@ import {
   Users,
   Globe,
   Zap,
+  CheckIcon,
   Instagram,
   MessageCircle,
   Mail,
@@ -33,6 +34,7 @@ import {
   Camera,
   Share2,
   Award,
+  MailCheck,
   MapPin,
   Calendar,
   ArrowRight,
@@ -40,8 +42,36 @@ import {
   Plus,
   Minus,
 } from "lucide-react"
+import { SlideCarousel } from "@/components/BannerCarousel"
 
 export default function ComingSoonPage() {
+  const images = [
+    { src: "/hangover-sale-icon-banners_9a4da4a7-080d-4fd5-b66f-c16a623a7947.webp", alt: "Image 1" },
+    { src: "/hangover-sale-icon-banners_2.webp", alt: "Image 2" },
+    { src: "/T Shirts.png", alt: "Image 3" },
+  ]
+
+  const pricingPlans = [
+    {
+      name: "Basic",
+      price: "₹99/month",
+      features: ["Up to 10 products", "1 Online shop link", "No commission, full control"],
+      colorClass: "text-green-500",
+    },
+    {
+      name: "Pro",
+      price: "₹299/month",
+      features: ["Up to 50 products", "Advanced analytics", "Basic support"],
+      colorClass: "text-blue-500",
+    },
+    {
+      name: "Unlimited",
+      price: "₹499/month",
+      features: ["Unlimited products", "Premium features", "Priority support"],
+      colorClass: "text-purple-500",
+    },
+  ]
+
   const [formData, setFormData] = useState({
     name: "",
     whatsapp: "",
@@ -69,46 +99,49 @@ export default function ComingSoonPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-yellow-50 to-green-100">
+    <div className="min-h-screen bg-[#fdfff0]">
       {/* Header */}
-      <header className="container mx-auto px-4 py-6">
+      <header className="container mx-auto px-4 py-1">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <Image src="/logo.png" alt="KeralaSellers Logo" width={120} height={60} className="h-12 w-auto" />
+            <Image src="/k-logo-removebg-preview.png" alt="KeralaSellers Logo" width={120} height={60} className="h-12 w-auto" />
           </div>
           <div className="flex items-center space-x-4">
             <Badge variant="secondary" className="bg-green-100 text-green-800 border-green-200">
               <Leaf className="w-3 h-3 mr-1" />
               Coming Soon
             </Badge>
-            <Button variant="outline" size="sm" className="hidden md:flex bg-transparent">
-              <Play className="w-4 h-4 mr-2" />
-              Watch Demo
-            </Button>
+            <Badge variant="secondary" className="bg-green-100 text-green-800 border-green-200">
+              <MailCheck className="w-3 h-3 mr-1" />
+              adarsh@keralasellers.in
+            </Badge>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
+      {/* <div className="min-h-screen bg-gray-100"> */}
+        <SlideCarousel images={images} autoPlay={true} interval={4000} />
+      {/* </div> */}
       <section className="container mx-auto px-4 py-12 md:py-20">
         <div className="text-center max-w-4xl mx-auto">
-          <div className="inline-flex items-center space-x-2 bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          {/* <div className="inline-flex items-center space-x-2 bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
             <span>🌴</span>
             <span>Made for Kerala • Launching Q2 2025</span>
-          </div>
+          </div> */}
 
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Empowering Kerala's{" "}
             <span className="text-green-600 relative">
               Resellers
-              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-yellow-300 rounded-full opacity-60"></div>
+              <div className="absolute  left-0 right-0 h-1  rounded-full opacity-60"></div>
             </span>{" "}
             to Go Digital
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Launch your own online shop – with <span className="font-semibold text-green-600">no commissions</span>.
-            Join 500+ Kerala businesses already on our waitlist!
+          <p className="text-xl md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Be among the first Kerala resellers to launch your <span className="font-semibold text-green-600">Digital Store</span>.
+             Early access members get free setup assistance and priority support
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -119,39 +152,25 @@ export default function ComingSoonPage() {
               Join Early Access
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
-            <Button
+            {/* <Button
               variant="outline"
               size="lg"
               className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3 text-lg rounded-full bg-transparent"
             >
               <Play className="w-5 h-5 mr-2" />
               Watch Demo
-            </Button>
+            </Button> */}
           </div>
 
-          {/* Trust Indicators */}
-          <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-600">
-            <div className="flex items-center space-x-2">
-              <Users className="w-4 h-4 text-green-600" />
-              <span>500+ Businesses Waiting</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Shield className="w-4 h-4 text-green-600" />
-              <span>100% Secure</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Heart className="w-4 h-4 text-green-600" />
-              <span>Made in Kerala</span>
-            </div>
-          </div>
+         
         </div>
       </section>
 
       {/* Stats Section */}
       <section className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {[
-            { number: "500+", label: "Businesses on Waitlist", icon: <Users className="w-6 h-6" /> },
+            // { number: "500+", label: "Businesses on Waitlist", icon: <Users className="w-6 h-6" /> },
             { number: "0%", label: "Commission Fee", icon: <CreditCard className="w-6 h-6" /> },
             { number: "24/7", label: "Support Available", icon: <Clock className="w-6 h-6" /> },
             { number: "100%", label: "Kerala Made", icon: <MapPin className="w-6 h-6" /> },
@@ -355,7 +374,7 @@ export default function ComingSoonPage() {
       </section>
 
       {/* How It Helps Section */}
-      <section className="bg-white/50 backdrop-blur-sm py-16">
+      {/* <section className="bg-white/50 backdrop-blur-sm py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -408,10 +427,10 @@ export default function ComingSoonPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Testimonials Section */}
-      <section className="container mx-auto px-4 py-16">
+      {/* <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Kerala Businesses Are Saying</h2>
           <p className="text-lg text-gray-600">Early feedback from our beta users and waitlist members</p>
@@ -462,7 +481,7 @@ export default function ComingSoonPage() {
             </Card>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* Roadmap Section */}
       <section className="bg-gradient-to-r from-green-50 to-yellow-50 py-16">
@@ -500,9 +519,8 @@ export default function ComingSoonPage() {
                 <div key={index} className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
                     <div
-                      className={`w-12 h-12 rounded-full flex items-center justify-center font-semibold ${
-                        phase.status === "upcoming" ? "bg-green-600 text-white" : "bg-gray-200 text-gray-600"
-                      }`}
+                      className={`w-12 h-12 rounded-full flex items-center justify-center font-semibold ${phase.status === "upcoming" ? "bg-green-600 text-white" : "bg-gray-200 text-gray-600"
+                        }`}
                     >
                       {index + 1}
                     </div>
@@ -535,6 +553,44 @@ export default function ComingSoonPage() {
           </div>
         </div>
       </section>
+
+      {/* {pricingsection} */}
+
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50 dark:bg-gray-900">
+      <div className="container px-4 md:px-6">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <div className="space-y-2">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Simple & Affordable Plans</h2>
+            <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+              Choose the perfect plan for your business needs.
+            </p>
+          </div>
+        </div>
+        <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 lg:grid-cols-3 lg:gap-12">
+          {pricingPlans.map((plan, index) => (
+            <Card
+              key={index}
+              className="flex flex-col justify-between h-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            >
+              <CardHeader>
+                <CardTitle className={`text-2xl font-bold ${plan.colorClass}`}>{plan.name}</CardTitle>
+                <CardDescription className="text-4xl font-bold mt-2">{plan.price}</CardDescription>
+              </CardHeader>
+              <CardContent className="grid gap-2">
+                <ul className="grid gap-2 text-gray-500 dark:text-gray-400">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center gap-2">
+                      <CheckIcon className="h-4 w-4 text-green-500" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
 
       {/* FAQ Section */}
       <section className="container mx-auto px-4 py-16">
@@ -623,8 +679,14 @@ export default function ComingSoonPage() {
             <Card className="border-0 shadow-xl bg-gradient-to-r from-green-50 to-yellow-50">
               <CardContent className="p-8">
                 <div className="text-center">
-                  <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
-                    AB
+                  <div className="w-24 h-24 bg-gradient-to-br from-yellow-400 to-green-500 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                    <Image
+                      src="/adarsh img.jpg"
+                      alt="User Avatar"
+                      width={96}
+                      height={96}
+                      className="object-cover w-full h-full"
+                    />
                   </div>
                   <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Adarsh B S</h3>
                   <p className="text-green-600 font-medium mb-4">Founder & CEO, Age 24</p>
@@ -634,7 +696,7 @@ export default function ComingSoonPage() {
                   </blockquote>
                   <div className="flex items-center justify-center space-x-2 mb-4">
                     <span className="text-xl">🌴</span>
-                    <span className="text-gray-600 text-sm">Tech & Vision</span>
+                    <span className="text-gray-600 text-sm">Strategy & Growth</span>
                   </div>
                   <div className="text-sm text-gray-600">
                     <p>Computer Science graduate passionate about empowering local businesses through technology.</p>
@@ -647,8 +709,14 @@ export default function ComingSoonPage() {
             <Card className="border-0 shadow-xl bg-gradient-to-r from-yellow-50 to-green-50">
               <CardContent className="p-8">
                 <div className="text-center">
-                  <div className="w-24 h-24 bg-gradient-to-br from-yellow-400 to-green-500 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
-                    AV
+                  <div className="w-24 h-24 bg-gradient-to-br from-yellow-400 to-green-500 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                    <Image
+                      src="/portfolio-pic.jpg"
+                      alt="User Avatar"
+                      width={96}
+                      height={96}
+                      className="object-cover w-full h-full"
+                    />
                   </div>
                   <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">Aromal V G</h3>
                   <p className="text-green-600 font-medium mb-4">Co-Founder</p>
@@ -658,7 +726,7 @@ export default function ComingSoonPage() {
                   </blockquote>
                   <div className="flex items-center justify-center space-x-2 mb-4">
                     <span className="text-xl">🚀</span>
-                    <span className="text-gray-600 text-sm">Strategy & Growth</span>
+                    <span className="text-gray-600 text-sm">Tech & Vision</span>
                   </div>
                   <div className="text-sm text-gray-600">
                     <p>Business strategist with deep understanding of Kerala's local commerce and digital marketing.</p>
@@ -782,7 +850,7 @@ export default function ComingSoonPage() {
 
             {/* Social Proof */}
             <div className="mt-8 text-center">
-              <p className="text-green-100 text-sm mb-4">Join 500+ Kerala businesses already waiting</p>
+              {/* <p className="text-green-100 text-sm mb-4">Join 500+ Kerala businesses already waiting</p> */}
               <div className="flex justify-center space-x-4 text-green-200">
                 <div className="flex items-center space-x-1">
                   <MapPin className="w-4 h-4" />
@@ -813,11 +881,11 @@ export default function ComingSoonPage() {
             <div className="md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
                 <Image
-                  src="/logo.png"
+                  src="/klogo.png"
                   alt="KeralaSellers Logo"
                   width={120}
                   height={60}
-                  className="h-10 w-auto brightness-0 invert"
+                  className="h-24 w-auto "
                 />
               </div>
               <p className="text-gray-400 mb-4 max-w-md">
