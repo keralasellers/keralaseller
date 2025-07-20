@@ -51,9 +51,9 @@ export default function ComingSoonPage() {
 
 
   const images = [
-        { src: "/T Shirts (4).png", alt: "Image 3" },
-    { src: "/T Shirts (5).png", alt: "Image 3" },
-    { src: "/T Shirts (6).png", alt: "Image 3" },
+        // { src: "/T Shirts (4).png", alt: "Image 3" },
+    // { src: "/T Shirts (5).png", alt: "Image 3" },
+    { src: "/T Shirts (7).png", alt: "Image 3" },
 
     { src: "/T Shirts (2).png", alt: "Image 3" },
     { src: "/T Shirts (3).png", alt: "Image 3" },
