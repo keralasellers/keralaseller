@@ -107,13 +107,20 @@ export default function ComingSoonPage() {
   }
 
   try {
-    const response = await fetch("/api/submit/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json", // ✅ Send JSON
-      },
-      body: JSON.stringify(jsonData),
-    })
+   const response = await fetch("/api/submit", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    name: formData.name,
+    whatsapp: formData.whatsapp,
+    businessName: formData.businessName,
+    formGoogleSheetName: "earlyaccess",
+    formGoogleSendEmail: "aromalvijayan448@gmail.com",
+  }),
+})
+
 
     if (response.ok) {
       setIsSubmitted(true)
