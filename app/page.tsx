@@ -107,7 +107,7 @@ export default function ComingSoonPage() {
   }
 
   try {
-    const response = await fetch("/api/submit", {
+    const response = await fetch("/api/submit/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // ✅ Send JSON
