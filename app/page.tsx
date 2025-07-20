@@ -46,9 +46,9 @@ import { SlideCarousel } from "@/components/BannerCarousel"
 
 export default function ComingSoonPage() {
   const images = [
-        { src: "/T Shirts.png", alt: "Image 3" },
         { src: "/T Shirts (2).png", alt: "Image 3" },
         { src: "/T Shirts (3).png", alt: "Image 3" },
+        { src: "/T Shirts.png", alt: "Image 3" },
 
 
 
@@ -114,10 +114,11 @@ export default function ComingSoonPage() {
               <Leaf className="w-3 h-3 mr-1" />
               Coming Soon
             </Badge>
-            <Badge variant="secondary" className="bg-green-100 text-green-800 border-green-200">
-              <MailCheck className="w-3 h-3 mr-1" />
-              adarsh@keralasellers.in
-            </Badge>
+<Badge variant="secondary" className="hidden md:inline-flex bg-green-100 text-green-800 border-green-200">
+  <MailCheck className="w-3 h-3 mr-1" />
+  adarsh@keralasellers.in
+</Badge>
+
           </div>
         </div>
       </header>
