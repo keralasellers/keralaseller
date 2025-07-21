@@ -62,8 +62,9 @@ export default function ComingSoonPage() {
     // { src: "/T Shirts (4).png", alt: "Image 3" },
     // { src: "/T Shirts (5).png", alt: "Image 3" },
     { src: "/hero.png", alt: "Image 3" },
-
     { src: "/T Shirts (2).png", alt: "Image 3" },
+    { src: "/casuals.png", alt: "Image 3" },
+
     { src: "/T Shirts (3).png", alt: "Image 3" },
     { src: "/T Shirts.png", alt: "Image 3" },
 
@@ -482,18 +483,18 @@ export default function ComingSoonPage() {
             {
               title: "Home & Kitchen Items",
               description: "Organize your home products by categories and offer bulk discounts to customers",
-              icon: <Home size={28} color="#0D9488" />,              
-          example: "Like Rajesh from Palakkad selling kitchen appliances",
+              icon: <Home size={28} color="#0D9488" />,
+              example: "Like Rajesh from Palakkad selling kitchen appliances",
             },
           ].map((useCase, index) => (
-          <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
-            <CardContent className="p-6">
-              <div className="text-4xl mb-4">{useCase.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">{useCase.title}</h3>
-              <p className="text-gray-600 mb-4">{useCase.description}</p>
-              <p className="text-sm text-green-600 italic">{useCase.example}</p>
-            </CardContent>
-          </Card>
+            <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
+              <CardContent className="p-6">
+                <div className="text-4xl mb-4">{useCase.icon}</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">{useCase.title}</h3>
+                <p className="text-gray-600 mb-4">{useCase.description}</p>
+                <p className="text-sm text-green-600 italic">{useCase.example}</p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>
