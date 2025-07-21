@@ -107,6 +107,8 @@ export default function Contact() {
                                         value={formData.whatsapp}
                                         onChange={handleInputChange}
                                         required
+                                        pattern="\d{10}"
+                                        maxLength={10}
                                         className="h-12"
                                     />
                                 </div>
