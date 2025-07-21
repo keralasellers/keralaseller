@@ -64,7 +64,6 @@ export default function ComingSoonPage() {
     { src: "/hero.png", alt: "Image 3" },
     { src: "/T Shirts (2).png", alt: "Image 3" },
     { src: "/casuals.png", alt: "Image 3" },
-
     { src: "/T Shirts (3).png", alt: "Image 3" },
     { src: "/T Shirts.png", alt: "Image 3" },
 
