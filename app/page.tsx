@@ -622,21 +622,21 @@ export default function ComingSoonPage() {
                 {
                   phase: "Phase 1",
                   title: "Beta Launch",
-                  date: "March 2025",
+                  date: "Oct 2025",
                   status: "upcoming",
                   features: ["Basic store setup", "Product management", "WhatsApp integration", "Mobile-first design"],
                 },
                 {
                   phase: "Phase 2",
                   title: "Public Launch",
-                  date: "April 2025",
+                  date: "Nov 2025",
                   status: "upcoming",
                   features: ["Payment gateway", "Delivery tracking", "Customer reviews", "Analytics dashboard"],
                 },
                 {
                   phase: "Phase 3",
                   title: "Advanced Features",
-                  date: "May 2025",
+                  date: "Dec 2025",
                   status: "planned",
                   features: ["Bulk orders", "Inventory management", "Multi-language support", "Advanced analytics"],
                 },
@@ -871,7 +871,7 @@ export default function ComingSoonPage() {
             {
               question: "When will the platform launch?",
               answer:
-                "We're planning a beta launch in March 2025, followed by public launch in April 2025. Join our waitlist to be among the first to get access!",
+                "We're planning a beta launch in oct 2025, followed by public launch in Nov 2025. Join our waitlist to be among the first to get access!",
             },
             {
               question: "Will there be customer support in Malayalam?",
