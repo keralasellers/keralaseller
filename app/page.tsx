@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+
 import {
   Smartphone,
   ShoppingCart,
@@ -27,6 +28,11 @@ import {
   Star,
   Clock,
   Shield,
+  Palette,
+  Pizza,
+  ShoppingBag,
+  Monitor,
+  Home,
   Heart,
   Truck,
   CreditCard,
@@ -34,6 +40,7 @@ import {
   Camera,
   Share2,
   Award,
+  Shirt,
   MailCheck,
   MapPin,
   Calendar,
@@ -445,48 +452,48 @@ export default function ComingSoonPage() {
               title: "Saree & Textile Sellers",
               description:
                 "Showcase your beautiful collections with high-quality photos and reach customers across Kerala",
-              icon: "👗",
+              icon: <Shirt className="w-8 h-8 text-gray-800" />,
               example: "Like Priya from Kochi selling handloom sarees",
             },
             {
               title: "Spice & Food Vendors",
               description: "Sell authentic Kerala spices, pickles, and homemade snacks with easy delivery tracking",
-              icon: "🌶️",
+              icon: <Pizza size={28} color="#FFD700" />,
               example: "Like Ravi from Kozhikode selling traditional spices",
             },
             {
               title: "Handicraft Artisans",
               description: "Display your unique Kerala handicrafts and connect with buyers who appreciate local art",
-              icon: "🎨",
+              icon: <Palette size={28} color="#6366F1" />,
               example: "Like Meera from Thrissur selling bamboo crafts",
             },
             {
               title: "Electronics Resellers",
               description: "Manage your electronics inventory and provide detailed product specifications",
-              icon: "📱",
+              icon: <Monitor size={28} color="#4338CA" />,
               example: "Like Suresh from Kottayam selling mobile accessories",
             },
             {
               title: "Fashion & Accessories",
               description: "Create lookbooks and style guides for your fashion products with easy social sharing",
-              icon: "👜",
+              icon: <ShoppingBag size={28} color="#8B4513" />,
               example: "Like Anjali from Thiruvananthapuram selling jewelry",
             },
             {
               title: "Home & Kitchen Items",
               description: "Organize your home products by categories and offer bulk discounts to customers",
-              icon: "🏠",
-              example: "Like Rajesh from Palakkad selling kitchen appliances",
+              icon: <Home size={28} color="#0D9488" />,              
+          example: "Like Rajesh from Palakkad selling kitchen appliances",
             },
           ].map((useCase, index) => (
-            <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
-              <CardContent className="p-6">
-                <div className="text-4xl mb-4">{useCase.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{useCase.title}</h3>
-                <p className="text-gray-600 mb-4">{useCase.description}</p>
-                <p className="text-sm text-green-600 italic">{useCase.example}</p>
-              </CardContent>
-            </Card>
+          <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
+            <CardContent className="p-6">
+              <div className="text-4xl mb-4">{useCase.icon}</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{useCase.title}</h3>
+              <p className="text-gray-600 mb-4">{useCase.description}</p>
+              <p className="text-sm text-green-600 italic">{useCase.example}</p>
+            </CardContent>
+          </Card>
           ))}
         </div>
       </section>
