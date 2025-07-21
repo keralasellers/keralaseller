@@ -979,7 +979,7 @@ export default function ComingSoonPage() {
           </div>
 
           <div className="border-t border-gray-800 pt-8 text-center">
-            <p className="text-lg font-medium text-green-400 mb-2">Launching Soon in Kerala 🇮🇳</p>
+            <p className="text-lg font-medium text-green-400 mb-2">Launching Soon in Kerala IN</p>
             <p className="text-gray-500 text-sm">© 2025 KeralaSellers.in. Made with ❤️ in God's Own Country</p>
           </div>
         </div>
