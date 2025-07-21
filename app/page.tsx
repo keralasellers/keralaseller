@@ -88,9 +88,54 @@ export default function ComingSoonPage() {
 
 
 
-  // const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const [formData, setFormData] = useState({
+    name: "",
+    whatsapp: "",
+    businessName: "",
+  })
+
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitted(true)
+
+    const form = new FormData()
+    form.append("name", formData.name)
+    form.append("whatsapp", formData.whatsapp)
+    form.append("businessName", formData.businessName)
+    form.append("formGoogleSheetName", "keralasellers")
+    form.append("formDataNameOrder", JSON.stringify(["name", "whatsapp", "businessName"]))
+    form.append("formGoogleSendEmail", "keralasellers.in@gmail.com")
+
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbwtyLGDrdA_87UB3QQDVNTCd8FJd26aOPP4wf4rRVGVmxNJjc0NqGNzNZIo4b_MVBuP/exec", {
+        method: "POST",
+        mode: "no-cors",
+        body: form,
+      })
+
+      // even if the response can't be read, assume success
+      setFormData({
+        name: "",
+        whatsapp: "",
+        businessName: "",
+      })
+      setIsSubmitted(true)
+    } catch (error) {
+      alert("Network error. Please try again later.")
+      setIsSubmitted(false)
+    }
+  }
 
 
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
 
 
 
@@ -148,7 +193,7 @@ export default function ComingSoonPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            {/* <Button
+            <Button
               size="lg"
               onClick={() => setIsModalOpen(true)}
               className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
@@ -221,7 +266,7 @@ export default function ComingSoonPage() {
                   )}
                 </div>
               </div>
-            )} */}
+            )}
             {/* <Button
               variant="outline"
               size="lg"
@@ -851,8 +896,8 @@ export default function ComingSoonPage() {
 
       {/* Waitlist Section */}
       <section className="bg-gradient-to-r from-green-600 to-green-700 py-16">
-        
-<Contact/>
+
+        <Contact />
 
       </section>
 
