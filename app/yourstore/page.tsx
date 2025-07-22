@@ -191,7 +191,7 @@ const DAMO = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#fdfff0]">
       {/* Notification Toast */}
       {showNotification && (
         <div className="fixed top-4 right-4 z-[100] animate-in slide-in-from-right-full duration-300">
@@ -558,7 +558,7 @@ const DAMO = () => {
           <div className="border-t border-gray-800 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <p className="text-gray-400 text-sm">
-                © 2025 DAMO. All rights reserved.
+                © 2025 DEMO. All rights reserved.
               </p>
               <div className="flex items-center space-x-6">
                 <div className="flex items-center space-x-2 text-sm text-gray-400">
