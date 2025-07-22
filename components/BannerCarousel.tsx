@@ -100,8 +100,9 @@ export function SlideCarousel({ images, autoPlay = false, interval = 4000 }: Sli
         ))}
       </div> */}
 
-      
+
     </div>
   )
 }
 
+ 
