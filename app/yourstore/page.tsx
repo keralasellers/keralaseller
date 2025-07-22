@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ShoppingCart, Heart, Star, Search, Menu, User, Filter, Grid, List, Zap, Award, Truck, Shield, X, Check, Phone, Mail } from 'lucide-react';
 import { SlideCarousel } from '@/components/BannerCarousel';
 
-const DAMO = () => {
+const demo = () => {
   const [cartItems, setCartItems] = useState(0);
   const [favorites, setFavorites] = useState<number[]>([]);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -25,7 +25,7 @@ const DAMO = () => {
   const products = [
     {
       id: 1,
-      name: "AirPods Pro Max - Premium Wireless",
+      name: "AirPods Pro Max ",
       price: 299.99,
       originalPrice: 399.99,
       image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=600&fit=crop&auto=format",
@@ -33,12 +33,12 @@ const DAMO = () => {
       reviews: 2847,
       category: "electronics",
       badge: "25% OFF",
-      description: "Experience unparalleled audio quality with active noise cancellation",
+      description: "Experience audio quality with active noise cancellation",
       inStock: true
     },
     {
       id: 2,
-      name: "Designer Leather Jacket - Limited Edition",
+      name: "Designer Leather Jacket ",
       price: 189.99,
       originalPrice: 299.99,
       image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=600&fit=crop&auto=format",
@@ -51,7 +51,7 @@ const DAMO = () => {
     },
     {
       id: 3,
-      name: "Apple Watch Ultra - Adventure Ready",
+      name: "Apple Watch Ultra ",
       price: 449.99,
       image: "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=600&h=600&fit=crop&auto=format",
       rating: 4.9,
@@ -63,7 +63,7 @@ const DAMO = () => {
     },
     {
       id: 4,
-      name: "Peak Design Travel Backpack",
+      name: "Peak Travel Backpack",
       price: 129.99,
       image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=600&fit=crop&auto=format",
       rating: 4.7,
@@ -74,7 +74,7 @@ const DAMO = () => {
     },
     {
       id: 5,
-      name: "Single Origin Ethiopian Coffee",
+      name: "Origin Ethiopian Coffee",
       price: 34.99,
       image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&h=600&fit=crop&auto=format",
       rating: 4.9,
@@ -86,7 +86,7 @@ const DAMO = () => {
     },
     {
       id: 6,
-      name: "MagSafe Wireless Charging Station",
+      name: "MagSafe Wireless Charging ",
       price: 79.99,
       image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=600&h=600&fit=crop&auto=format",
       rating: 4.6,
@@ -175,7 +175,7 @@ const DAMO = () => {
   const handleCategoryChange = (categoryId: string) => {
     setSelectedCategory(categoryId);
     const category = categories.find(c => c.id === categoryId);
-    showToast(`Showing ${category?.name}`);
+    showToast(`Showing ₹{category?.name}`);
   };
 
   const getBadgeColor = (badge: string) => {
@@ -195,7 +195,7 @@ const DAMO = () => {
       {/* Notification Toast */}
       {showNotification && (
         <div className="fixed top-4 right-4 z-[100] animate-in slide-in-from-right-full duration-300">
-          <div className="bg-white border border-green-200 rounded-lg shadow-lg p-4 max-w-sm flex items-center">
+          <div className="bg-gray border border-green-200 rounded-lg shadow-lg p-4 max-w-sm flex items-center">
             <Check className="h-5 w-5 text-green-600 mr-2" />
             <p className="text-gray-800">{notification}</p>
             <button onClick={() => setShowNotification(false)} className="ml-auto text-gray-400 hover:text-gray-600">
@@ -222,7 +222,7 @@ const DAMO = () => {
                 {['Home', 'Categories', 'Deals', 'About'].map((item) => (
                   <button 
                     key={item}
-                    onClick={() => showToast(`Navigating to ${item}`)}
+                    onClick={() => showToast(`Navigating to ₹{item}`)}
                     className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
                   >
                     {item}
@@ -280,7 +280,7 @@ const DAMO = () => {
             </div>
             <div className="flex items-center space-x-2 text-blue-700">
               <Truck className="h-4 w-4" />
-              <span>Free Shipping Over $50</span>
+              <span>Free Shipping Over ₹50</span>
             </div>
             <div className="flex items-center space-x-2 text-blue-700">
               <Award className="h-4 w-4" />
@@ -294,7 +294,7 @@ const DAMO = () => {
    <SlideCarousel images={images} autoPlay={true} interval={4000} />
 
       {/* Features */}
-      <div className="bg-white py-12 border-b border-gray-200">
+      <div className="bg-gray py-12 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
@@ -348,7 +348,7 @@ const DAMO = () => {
                 onClick={() => setViewMode('grid')}
                 className={`p-2 rounded-md transition-colors duration-200 ${
                   viewMode === 'grid' 
-                    ? 'bg-white text-blue-600 shadow-sm' 
+                    ? 'bg-gray text-blue-600 shadow-sm' 
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
@@ -358,7 +358,7 @@ const DAMO = () => {
                 onClick={() => setViewMode('list')}
                 className={`p-2 rounded-md transition-colors duration-200 ${
                   viewMode === 'list' 
-                    ? 'bg-white text-blue-600 shadow-sm' 
+                    ? 'bg-gray text-blue-600 shadow-sm' 
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
@@ -367,7 +367,27 @@ const DAMO = () => {
             </div>
           </div>
         </div>
+{/* Demo Banner */}
+      <div className="fixed top-1/2 left-0 right-0 z-[90] pointer-events-none">
+        <div className="bg-red-600 bg-opacity-10 border-y border-red-300 py-2 overflow-hidden">
+          <div className="animate-marquee whitespace-nowrap text-red-600 font-bold text-lg opacity-70">
+            DEMO VERSION • NOT FOR PRODUCTION USE • DEMO VERSION • NOT FOR PRODUCTION USE • DEMO VERSION • NOT FOR PRODUCTION USE • DEMO VERSION • NOT FOR PRODUCTION USE • 
+          </div>
+        </div>
+      </div>
 
+      {/* Notification Toast */}
+      {showNotification && (
+        <div className="fixed top-4 right-4 z-[100] animate-in slide-in-from-right-full duration-300">
+          <div className="bg-gray border border-green-200 rounded-lg shadow-lg p-4 max-w-sm flex items-center">
+            <Check className="h-5 w-5 text-green-600 mr-2" />
+            <p className="text-gray-800">{notification}</p>
+            <button onClick={() => setShowNotification(false)} className="ml-auto text-gray-400 hover:text-gray-600">
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      )}
         {/* Products Grid */}
         <div className={`${
           viewMode === 'grid' 
@@ -377,7 +397,7 @@ const DAMO = () => {
           {filteredProducts.map((product) => (
             <div 
               key={product.id} 
-              className={`bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-200 ${
+              className={`bg-gray rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-200 ${
                 viewMode === 'list' ? 'flex max-w-4xl' : ''
               }`}
             >
@@ -396,7 +416,7 @@ const DAMO = () => {
                 
                 <button 
                   onClick={() => toggleFavorite(product.id)}
-                  className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-shadow duration-200"
+                  className="absolute top-3 right-3 p-2 bg-gray rounded-full shadow-sm hover:shadow-md transition-shadow duration-200"
                 >
                   <Heart 
                     className={`h-4 w-4 ${
@@ -447,11 +467,11 @@ const DAMO = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
                       <span className="text-xl font-bold text-gray-900">
-                        ${product.price}
+                        ₹{product.price}
                       </span>
                       {product.originalPrice && (
                         <span className="text-sm text-gray-500 line-through">
-                          ${product.originalPrice}
+                          ₹{product.originalPrice}
                         </span>
                       )}
                     </div>
@@ -508,18 +528,18 @@ const DAMO = () => {
                 <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                   <Zap className="h-5 w-5 text-white" />
                 </div>
-                <h3 className="text-xl font-bold">DAMO</h3>
+                <h3 className="text-xl font-bold">demo</h3>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Your trusted partner for premium products, exceptional quality, and reliable service.
               </p>
               <div className="flex items-center space-x-2 text-sm text-gray-400">
                 <Phone className="h-4 w-4" />
-                <span>1-800-DAMO-SHOP</span>
+                <span>1-800-demo-SHOP</span>
               </div>
               <div className="flex items-center space-x-2 text-sm text-gray-400">
                 <Mail className="h-4 w-4" />
-                <span>support@damo.com</span>
+                <span>support@demo.com</span>
               </div>
             </div>
             
@@ -543,7 +563,7 @@ const DAMO = () => {
                   {section.items.map((item) => (
                     <li key={item}>
                       <button
-                        onClick={() => showToast(`Opening ${item}`)}
+                        onClick={() => showToast(`Opening ₹{item}`)}
                         className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
                       >
                         {item}
@@ -577,4 +597,4 @@ const DAMO = () => {
   );
 };
 
-export default DAMO;
+export default demo;
