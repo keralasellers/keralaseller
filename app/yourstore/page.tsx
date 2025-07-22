@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { ShoppingCart, Heart, Star, Search, Menu, User, Filter, Grid, List, Zap, Award, Truck, Shield, X, Check, Phone, Mail } from 'lucide-react';
+import { SlideCarousel } from '@/components/BannerCarousel';
 
 const DAMO = () => {
   const [cartItems, setCartItems] = useState(0);
@@ -12,7 +13,15 @@ const DAMO = () => {
   const [showNotification, setShowNotification] = useState(false);
   const [notification, setNotification] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
+  const images = [
+    // { src: "/T Shirts (4).png", alt: "Image 3" },
+    // { src: "/T Shirts (5).png", alt: "Image 3" },
+    { src: "/hero.png", alt: "Image 3" },
+    { src: "/T Shirts (2).png", alt: "Image 3" },
+    { src: "/casuals.png", alt: "Image 3" },
+    { src: "/T Shirts (3).png", alt: "Image 3" },
+    { src: "/T Shirts.png", alt: "Image 3" },
+  ]
   const products = [
     {
       id: 1,
@@ -206,7 +215,7 @@ const DAMO = () => {
                   <Zap className="h-5 w-5 text-white" />
                 </div>
                 <div className="text-2xl font-bold text-gray-900">
-                  DAMO
+                  DEMO
                 </div>
               </div>
               <nav className="hidden md:flex space-x-8">
@@ -282,37 +291,12 @@ const DAMO = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Welcome to <span className="text-blue-600">DAMO</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Discover premium products at unbeatable prices. Quality guaranteed with fast, free shipping.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => showToast('Browsing products')}
-                className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200"
-              >
-                Shop Now
-              </button>
-              <button 
-                onClick={() => showToast('Viewing special offers')}
-                className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200"
-              >
-                View Deals
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+   <SlideCarousel images={images} autoPlay={true} interval={4000} />
 
       {/* Features */}
       <div className="bg-white py-12 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { icon: Truck, text: 'Free Shipping', desc: 'Orders over $50' },
               { icon: Shield, text: 'Secure Payment', desc: 'SSL protected' },
