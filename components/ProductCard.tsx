@@ -56,10 +56,10 @@ export default function ProductCard({
             e.preventDefault() // Prevent navigating when clicking icon
             toggleFavorite(product.id)
           }}
-          className="p-1 rounded-full bg-white/80 text-gray-800 hover:bg-white transition-colors"
+          className="p-1 rounded-full  text-gray-900 hover:bg-white transition-colors"
         >
           <Heart
-            className={`w-4 h-4 ${isFavorite ? "fill-red-500 stroke-red-500" : "text-gray-400 hover:text-red-400"}`}
+            className={`w-5 h-5 ${isFavorite ? "fill-red-500 stroke-red-500" : "text-red-500 hover:text-red-400"}`}
           />
           <span className="sr-only">Add to Wishlist</span>
         </button>
@@ -111,12 +111,12 @@ export default function ProductCard({
             addToCart(product)
           }}
           disabled={isAddingToCart} // Disable if adding to cart
-          className="p-1 rounded-full bg-white/80 text-gray-800 hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="p-1 rounded-full text-green-500 hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isAddingToCart ? (
-            <div className="animate-spin rounded-full h-4 w-4 border-2 border-gray-800 border-t-transparent"></div>
+            <div className="animate-spin rounded-full h-6 w-6 border-2 border-gray-800 border-t-transparent"></div>
           ) : (
-            <ShoppingCart className="w-4 h-4" />
+            <ShoppingCart className="w-5 h-5" />
           )}
           <span className="sr-only">Add to Cart</span>
         </button>
