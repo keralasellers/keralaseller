@@ -46,7 +46,7 @@ const demo = () => {
     {
       id: 1,
       name: "AirPods Pro Max ",
-      price: 299.99,
+      price: 11999,
       originalPrice: 399.99,
       image: "/5.png",
       rating: 4.9,
@@ -59,7 +59,7 @@ const demo = () => {
     {
       id: 2,
       name: "Designer Leather Jacket ",
-      price: 189.99,
+      price: 1089.99,
       originalPrice: 299.99,
       image: "/4.png",
       rating: 4.8,
@@ -72,7 +72,7 @@ const demo = () => {
     {
       id: 3,
       name: "Apple Watch Ultra ",
-      price: 449.99,
+      price: 14449.99,
       image: "/8.png",
       rating: 4.9,
       reviews: 3421,
@@ -84,7 +84,7 @@ const demo = () => {
     {
       id: 4,
       name: "Peak Travel Backpack",
-      price: 129.99,
+      price: 1229.99,
       image: "/6.png",
       rating: 4.7,
       reviews: 892,
@@ -95,7 +95,7 @@ const demo = () => {
     {
       id: 5,
       name: "Nike Shoes",
-      price: 34.99,
+      price: 3004.99,
       image: "/2.png",
       rating: 4.9,
       reviews: 567,
@@ -107,7 +107,7 @@ const demo = () => {
     {
       id: 6,
       name: "Womens Kurta ",
-      price: 79.99,
+      price: 779.99,
       image: "/3.png",
       rating: 4.6,
       reviews: 1456,
@@ -118,7 +118,7 @@ const demo = () => {
     {
       id: 7,
       name: "Minimalist Titanium Watch",
-      price: 299.99,
+      price: 2399.99,
       image: "/1.png",
       rating: 4.8,
       reviews: 743,
@@ -305,7 +305,7 @@ const demo = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { icon: Truck, text: "Free Shipping", desc: "Orders over $50" },
+              { icon: Truck, text: "Free Shipping", desc: "Orders over ₹50" },
               { icon: Shield, text: "Secure Payment", desc: "SSL protected" },
               { icon: Award, text: "Quality Products", desc: "Verified brands" },
               { icon: Phone, text: "24/7 Support", desc: "Always here to help" },

@@ -98,9 +98,9 @@ export default function ProductCard({
           </span>{" "}
           {/* Dynamic rating */}
         </div>
-        <p className="text-sm font-bold mt-1">${product.price.toFixed(2)}</p> {/* Dynamic price */}
+        <p className="text-sm font-bold mt-1">₹{product.price.toFixed(2)}</p> {/* Dynamic price */}
         {product.originalPrice && (
-          <span className="text-[10px] text-gray-300 line-through">${product.originalPrice.toFixed(2)}</span>
+          <span className="text-[10px] text-gray-300 line-through">₹{product.originalPrice.toFixed(2)}</span>
         )}
       </div>
       {/* Cart icon at bottom-right, outside the text overlay */}
