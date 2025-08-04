@@ -2,6 +2,7 @@
 
 import type React from "react"
 import type { HTMLInputElement } from "react"
+import Link from "next/link"
 import { User } from "lucide-react"
 import { useState, useEffect } from "react"
 import Image from "next/image"
@@ -273,14 +274,16 @@ export default function ComingSoonPage() {
                 </div>
               </div>
             )}
-            {/* <Button
-              variant="outline"
-              size="lg"
-              className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3 text-lg rounded-full bg-transparent"
-            >
-              <Play className="w-5 h-5 mr-2" />
-              Watch Demo
-            </Button> */}
+<Link href="/yourstore">
+  <Button
+    variant="outline"
+    size="lg"
+    className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3 text-lg rounded-full bg-transparent"
+  >
+    <Play className="w-5 h-5 mr-2" />
+    See Demo
+  </Button>
+</Link>
           </div>
 
 
