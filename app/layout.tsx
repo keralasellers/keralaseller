@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Head from 'next/head'
 export const metadata: Metadata = {
-  title: 'Kerala Online Selling Platform - Sell Products Online Kerala | KeralaSellers.in',
-  description: 'Best platform to sell products online in Kerala. Zero commission, mobile-first design. Join 400+ Kerala sellers. Create your online store today with WhatsApp integration.',
+  title: 'Sell Products Online Kerala | KeralaSellers.in',
+  description: 'Best platform to sell products online in Kerala. Zero commission, mobile-first design. Join 400+ Kerala sellers today.',
   
   keywords: [
     'sell products online kerala',
