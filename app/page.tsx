@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-import type { HTMLInputElement } from "react"
 import Link from "next/link"
 import Head from "next/head"
 import { User } from "lucide-react"
@@ -127,10 +126,11 @@ export default function ComingSoonPage() {
     }
   }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const { name, value } = e.target
+  setFormData((prev) => ({ ...prev, [name]: value }))
+}
+
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index)
