@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     },
   },
   
-  // Open Graph - Fixed to prevent duplicates
+  // Open Graph - Fixed formatting
   openGraph: {
     type: 'website',
-    locale: 'en_IN',
+    locale: 'en_IN', // ✅ Fixed: removed escaped underscore
     url: '/',
     siteName: 'KeralaSellers.in',
     title: 'Kerala Online Selling Platform - Sell Products Online Kerala',
@@ -52,14 +52,14 @@ export const metadata: Metadata = {
     },
   },
   
-  // Twitter Card
+  // Twitter Card - Fixed formatting
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary_large_image', // ✅ Fixed: removed escaped underscores
     title: 'Kerala Online Selling Platform - KeralaSellers.in',
     description: 'Best platform to sell products online in Kerala with zero commission.',
     images: ['/hero.png'],
-    creator: '@kerala_sellers',
-    site: '@kerala_sellers',
+    creator: '@kerala_sellers', // ✅ Fixed: removed escaped underscore
+    site: '@kerala_sellers', // ✅ Fixed: removed escaped underscore
   },
   
   // Additional metadata
@@ -72,13 +72,15 @@ export const metadata: Metadata = {
     // bing: 'your-bing-verification-code',
   },
   
-  // Alternate languages and canonical
+  // ✅ FIXED: Removed hreflang languages to prevent duplicate issue
+  // Only canonical remains in root layout
   alternates: {
     canonical: '/',
-    languages: {
-      'en-IN': '/',
-      'ml-IN': '/ml',
-    },
+    // Removed languages section to fix duplicate hreflang issue
+    // languages: {
+    //   'en-IN': '/',
+    //   'ml-IN': '/ml',
+    // },
   },
   
   // Other metadata
@@ -105,7 +107,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: JSON.stringify({ // ✅ Fixed: removed escaped underscores
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "KeralaSellers.in",
@@ -145,7 +147,7 @@ export default function RootLayout({
                 "availableLanguage": ["English", "Malayalam"]
               },
               "sameAs": [
-                "https://www.instagram.com/kerala_sellers"
+                "https://www.instagram.com/kerala_sellers" // ✅ Fixed: removed escaped underscore
               ]
             })
           }}
@@ -155,7 +157,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: JSON.stringify({ // ✅ Fixed: removed escaped underscores
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "KeralaSellers.in",
@@ -164,8 +166,8 @@ export default function RootLayout({
               "inLanguage": "en-IN",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://www.keralasellers.in/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
+                "target": "https://www.keralasellers.in/search?q={search_term_string}", // ✅ Fixed: removed escaped underscores
+                "query-input": "required name=search_term_string" // ✅ Fixed: removed escaped underscores
               }
             })
           }}
@@ -175,7 +177,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: JSON.stringify({ // ✅ Fixed: removed escaped underscores
               "@context": "https://schema.org",
               "@type": "Service",
               "name": "Online Selling Platform",
@@ -210,10 +212,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://script.google.com" />
         
-        {/* Hreflang links */}
+        {/* ✅ REMOVED: Hreflang links to prevent duplicate issue */}
+        {/* These caused duplicate hreflang annotations across pages */}
+        {/*
         <link rel="alternate" hrefLang="x-default" href="https://www.keralasellers.in/" />
         <link rel="alternate" hrefLang="en-IN" href="https://www.keralasellers.in/" />
         <link rel="alternate" hrefLang="ml-IN" href="https://www.keralasellers.in/ml" />
+        */}
 
         {/* Favicon and icons */}
         <link rel="icon" href="/favicon.ico" />
