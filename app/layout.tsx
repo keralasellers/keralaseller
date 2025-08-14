@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Head from 'next/head'
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.keralasellers.in'),
+  
   title: 'Sell Products Online Kerala | KeralaSellers.in',
   description: 'Best platform to sell products online in Kerala. Zero commission, mobile-first design. Join 400+ Kerala sellers today.',
   
@@ -18,7 +20,7 @@ export const metadata: Metadata = {
     'zero commission selling platform'
   ].join(', '),
   
-  authors: [{ name: 'Adarsh B S' }, { name: 'Aromal V G' }],
+  authors: [{ name: 'Adarsh B S' }],
   creator: 'KeralaSellers.in',
   publisher: 'KeralaSellers.in',
   
@@ -34,35 +36,27 @@ export const metadata: Metadata = {
     },
   },
   
-  // Open Graph
+  // Open Graph - Fixed to prevent duplicates
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://www.keralasellers.in',
+    url: '/',
     siteName: 'KeralaSellers.in',
     title: 'Kerala Online Selling Platform - Sell Products Online Kerala',
     description: 'Best platform to sell products online in Kerala. Zero commission, mobile-first design for Kerala sellers.',
-    images: [
-      {
-        url: '/hero.png',
-        width: 1200,
-        height: 630,
-        alt: 'Kerala online selling platform - sell products online with zero commission',
-      },
-      {
-        url: '/k-logo-removebg-preview.png',
-        width: 400,
-        height: 200,
-        alt: 'KeralaSellers.in logo - Best platform to sell products online Kerala',
-      },
-    ],
+    images: {
+      url: '/hero.png',
+      width: 1200,
+      height: 630,
+      alt: 'Kerala online selling platform - sell products online with zero commission',
+    },
   },
   
   // Twitter Card
   twitter: {
     card: 'summary_large_image',
     title: 'Kerala Online Selling Platform - KeralaSellers.in',
-    description: 'Best platform to sell products online in Kerala with zero commission. Mobile-first design for Kerala sellers.',
+    description: 'Best platform to sell products online in Kerala with zero commission.',
     images: ['/hero.png'],
     creator: '@kerala_sellers',
     site: '@kerala_sellers',
@@ -72,18 +66,18 @@ export const metadata: Metadata = {
   category: 'E-commerce Platform',
   classification: 'Business',
   
-  // Verification tags (add when you have them)
+  // Verification tags
   verification: {
     // google: 'your-google-site-verification-code',
     // bing: 'your-bing-verification-code',
   },
   
-  // Alternate languages
+  // Alternate languages and canonical
   alternates: {
-    canonical: 'https://www.keralasellers.in',
+    canonical: '/',
     languages: {
-      'en-IN': 'https://www.keralasellers.in',
-      'ml-IN': 'https://www.keralasellers.in/ml', // When you add Malayalam support
+      'en-IN': '/',
+      'ml-IN': '/ml',
     },
   },
   
@@ -91,7 +85,7 @@ export const metadata: Metadata = {
   other: {
     'geo.region': 'IN-KL',
     'geo.placename': 'Kerala',
-    'geo.position': '10.8505;76.2711', // Kerala coordinates
+    'geo.position': '10.8505;76.2711',
     'ICBM': '10.8505, 76.2711',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
@@ -156,9 +150,7 @@ export default function RootLayout({
             })
           }}
         />
-              <Head>
-        <link rel="canonical" href="https://www.keralasellers.in/" />
-      </Head>
+        
         {/* Structured Data - Website */}
         <script
           type="application/ld+json"
@@ -218,9 +210,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://script.google.com" />
         
-  <link rel="alternate" hrefLang="x-default" href="https://www.keralasellers.in/" />
-  <link rel="alternate" hrefLang="en-IN" href="https://www.keralasellers.in/" />
-  <link rel="alternate" hrefLang="ml-IN" href="https://www.keralasellers.in/ml" />
+        {/* Hreflang links */}
+        <link rel="alternate" hrefLang="x-default" href="https://www.keralasellers.in/" />
+        <link rel="alternate" hrefLang="en-IN" href="https://www.keralasellers.in/" />
+        <link rel="alternate" hrefLang="ml-IN" href="https://www.keralasellers.in/ml" />
 
         {/* Favicon and icons */}
         <link rel="icon" href="/favicon.ico" />
@@ -236,19 +229,6 @@ export default function RootLayout({
       
       <body className="antialiased bg-[#fdfff0] text-gray-900">
         {children}
-        
-        {/* Google Analytics - Add when ready */}
-        {/* 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'GA_MEASUREMENT_ID');
-          `
-        }} />
-        */}
       </body>
     </html>
   )

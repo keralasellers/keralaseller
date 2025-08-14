@@ -1,0 +1,52 @@
+# Robots.txt for KeralaSellers.in - Kerala Online Selling Platform
+User-agent: *
+Allow: /
+
+# Important pages for Kerala sellers - prioritize crawling
+Allow: /
+Allow: /demo
+Allow: /features
+Allow: /how-it-works
+Allow: /kerala-sellers
+Allow: /sell-online
+Allow: /platform-features
+
+# Block unnecessary crawling to improve crawl budget
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /search*
+Disallow: /*?*
+Disallow: /thank-you$
+
+# Block duplicate content variations
+Disallow: /*?utm_source=*
+Disallow: /*?utm_medium=*
+Disallow: /*?utm_campaign=*
+Disallow: /*ref=*
+
+# Allow Google and Bing to access important images
+User-agent: Googlebot
+Allow: /images/
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.webp$
+
+User-agent: Bingbot
+Allow: /images/
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.webp$
+
+# Sitemap location for Kerala sellers platform
+Sitemap: https://www.keralasellers.in/sitemap.xml
+Sitemap: https://www.keralasellers.in/sitemap-index.xml
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Comment: This robots.txt optimizes crawling for Kerala online selling platform
+# Last updated: August 2025
