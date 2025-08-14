@@ -1,5 +1,4 @@
 "use client"
-import type { Metadata } from 'next'
 
 import type React from "react"
 import Link from "next/link"
@@ -54,15 +53,7 @@ import {
 } from "lucide-react"
 import { SlideCarousel } from "@/components/BannerCarousel"
 import Contact from "@/components/Contact"
-export const metadata: Metadata = {
-  alternates: {
-    canonical: '/',
-    languages: {
-      'en-IN': '/',
-      'ml-IN': '/ml', // Only if Malayalam version exists
-    },
-  },
-}
+
 export default function ComingSoonPage() {
   const images = [
     { src: "/hero.png", alt: "Kerala online selling platform - sell products online with zero commission" },
