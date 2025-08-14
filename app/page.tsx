@@ -1003,7 +1003,7 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaE
             <Mail className="w-6 h-6" />
           </a>
           {/* ✅ Added LinkedIn for professional presence */}
-          <a href="https://www.linkedin.com/company/digital-product-solutions" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+          <a href="https://www.linkedin.com/company/digital-product-adarsh" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
             <Linkedin className="w-6 h-6" />
           </a>
         </div>
