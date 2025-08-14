@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-
+import Head from 'next/head'
 export const metadata: Metadata = {
   title: 'Kerala Online Selling Platform - Sell Products Online Kerala | KeralaSellers.in',
   description: 'Best platform to sell products online in Kerala. Zero commission, mobile-first design. Join 400+ Kerala sellers. Create your online store today with WhatsApp integration.',
@@ -156,7 +156,9 @@ export default function RootLayout({
             })
           }}
         />
-        
+              <Head>
+        <link rel="canonical" href="https://www.keralasellers.in/" />
+      </Head>
         {/* Structured Data - Website */}
         <script
           type="application/ld+json"
@@ -216,6 +218,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://script.google.com" />
         
+  <link rel="alternate" hrefLang="x-default" href="https://www.keralasellers.in/" />
+  <link rel="alternate" hrefLang="en-IN" href="https://www.keralasellers.in/" />
+  <link rel="alternate" hrefLang="ml-IN" href="https://www.keralasellers.in/ml" />
+
         {/* Favicon and icons */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
