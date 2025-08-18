@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.keralasellers.in'),
   
   title: 'Sell Products Online Kerala | KeralaSellers.in',
+    icons: {
+    icon: "./a.png",
+  },
   description: 'Best platform to sell products online in Kerala. Zero commission, mobile-first design. Join 400+ Kerala sellers today.',
   
   keywords: [
