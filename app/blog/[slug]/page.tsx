@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -277,495 +276,15 @@ const blogPosts = [
     views: "3.2k",
     likes: 201,
     author: "KeralaSellers Team"
-  },
-//   {
-//     id: 4,
-//     title: "Instagram to Sales: Kerala Seller's Complete Guide",
-//     description: "Turn your Instagram followers into paying customers with these proven strategies designed specifically for Kerala market.",
-//     content: `
-//       Instagram's Power in Kerala
-//       Kerala has one of the highest Instagram engagement rates in India. With over 3 million active users, it's a goldmine for sellers who know how to leverage it correctly.
-
-//       Why Instagram Works for Kerala Sellers
-      
-//         Visual-first platform perfect for showcasing products
-//         Strong local community engagement
-//         Easy integration with WhatsApp for sales
-//         Cost-effective compared to traditional advertising
-      
-
-//       Setting Up Your Business Profile
-      
-//         Switch to Business Account: Access analytics and promotional tools
-//         Complete Your Bio: Include what you sell, location (Kerala), and contact info
-//         Add Contact Buttons: WhatsApp, Call, Email buttons
-//         Link Your Store: Add your KeralaSellers store link
-      
-
-      
-//         Sample Bio Template:
-//         🌟 Handmade Jewelry | Kerala
-//         📱 WhatsApp for Orders
-//         🚚 All Kerala Delivery
-//         💎 Custom Orders Available
-//         👇 Shop Link Below
-      
-
-//       Content Strategy for Kerala Market
-
-//       Post Types That Convert
-      
-//         Product Showcases: High-quality photos with local backgrounds
-//         Behind-the-Scenes: Making process, packaging
-//         Customer Reviews: Video testimonials from Kerala customers
-//         Local Events: Onam collections, festival specials
-//         Educational Content: How to care for products, styling tips
-      
-
-//       Kerala-Specific Hashtag Strategy
-      
-//         Local Tags: #Kerala #Kochi #Trivandrum #Kozhikode #Thrissur
-//         Product Tags: #KeralaSarees #HandmadeKerala #KeralaSpices
-//         Community Tags: #MalayaliMade #KeralaSmallBusiness #SupportLocal
-//         Festival Tags: #OnamSpecial #VishuCollection #KeralaFestival
-      
-
-//       Instagram Stories Strategy
-//       Stories have 500+ million daily users. Use them for:
-      
-//         Quick Updates: New arrivals, restocks
-//         Flash Sales: Limited time offers
-//         Polls: Ask followers what they want to see
-//         Q&A: Answer product questions
-//         Behind-the-Scenes: Daily business activities
-      
-
-//       Converting Followers to Sales
-
-//       The Instagram to WhatsApp Funnel
-      
-//         Attention: Eye-catching post or story
-//         Interest: Detailed product description in comments
-//         Desire: Show social proof, reviews
-//         Action: "DM for price" or "WhatsApp for orders"
-      
-
-//       Call-to-Action Examples
-      
-//         "WhatsApp us for current prices 📱"
-//         "DM for customization options 💬"
-//         "Link in bio to browse full collection 🛍️"
-//         "Story highlight for size chart 📏"
-      
-
-//       Building Kerala Community
-
-//       Engagement Tactics
-      
-//         Local Collaborations: Partner with Kerala influencers
-//         User-Generated Content: Repost customer photos
-//         Kerala Pride Posts: Celebrate local culture
-//         Community Challenges: #MyKeralaStyle contests
-      
-
-//       Timing Your Posts
-//       Best posting times for Kerala audience:
-      
-//         Weekdays: 7-9 AM, 12-2 PM, 7-9 PM
-//         Weekends: 10 AM-12 PM, 3-5 PM, 8-10 PM
-//         Festival Season: Post 2-3 times daily
-      
-
-//       Instagram Shopping Features
-//       Set up Instagram Shopping to tag products directly:
-      
-//         Connect your KeralaSellers catalog
-//         Tag products in posts and stories
-//         Enable shopping in your bio
-//         Use product stickers in stories
-      
-
-//       Measuring Success
-
-//       Key Metrics to Track
-      
-//         Reach: How many Kerala users see your content
-//         Engagement Rate: Likes, comments, shares per post
-//         Profile Visits: People checking your business
-//         Website Clicks: Traffic to your store
-//         WhatsApp Messages: Direct sales inquiries
-      
-
-//       Common Mistakes to Avoid
-      
-//         Posting only product photos without context
-//         Ignoring comments and DMs
-//         Using too many irrelevant hashtags
-//         Not posting consistently
-//         Forgetting to add location tags
-      
-
-//       Success Story
-      
-//         Meera's Handloom, Palakkad: Started with 200 followers, now has 15K+ and makes ₹80K monthly revenue. Key: Consistent posting, local hashtags, and quick WhatsApp responses.
-      
-
-//       Action Plan
-      
-//         Switch to business account today
-//         Optimize your bio with Kerala keywords
-//         Plan 1 week of content in advance
-//         Research and save 30 relevant hashtags
-//         Post daily for the first month
-//         Respond to all DMs within 2 hours
-//         Track metrics weekly
-      
-//     `,
-//     readTime: "7-9 min read",
-//     category: "Social Media",
-//     date: "2025-01-05",
-//     image: "/blog-4.png",
-//     slug: "instagram-sales-kerala-guide",
-//     views: "2.1k",
-//     likes: 134,
-//     author: "Digital Marketing Team"
-//   },
-//   {
-//     id: 5,
-//     title: "കേരളത്തിലെ ഹോം ബിസിനസ്: വിജയകരമായ തുടക്കം",
-//     description: "വീട്ടിൽ നിന്ന് ചെറിയ ബിസിനസ് തുടങ്ങി വിജയിച്ച കേരളത്തിലെ സ്ത്രീകളുടെ കഥകളും ടിപ്സും.",
-//     content: `
-//       ഹോം ബിസിനസ് - കേരളത്തിലെ പുതിയ ട്രെൻഡ്
-//       കോവിഡിനു ശേഷം കേരളത്തിൽ വീട്ടിൽ നിന്നുള്ള ബിസിനസ് 300% വർധിച്ചിട്ടുണ്ട്. പ്രത്യേകിച്ച് സ്ത്രീകൾ ഈ മേഖലയിൽ മികച്ച പ്രകടനം കാഴ്ചവെക്കുന്നു.
-
-//       എന്തുകൊണ്ട് ഹോം ബിസിനസ്?
-      
-//         കുറഞ്ഞ നിക്ഷേപത്തിൽ തുടങ്ങാം
-//         വീട്ടുകാര്യങ്ങളും ബിസിനസും ഒരുമിച്ച് നോക്കാം
-//         സ്വന്തം സമയത്തിനനുസരിച്ച് പ്രവർത്തിക്കാം
-//         കുടുംബത്തിന്റെ സഹായം ലഭിക്കും
-      
-
-//       വിജയകഥകൾ
-
-//       രേശ്മയുടെ കഥ - എറണാകുളം
-      
-//         ബിസിനസ്: ഹാൻഡ്‌മേഡ് ജ്വല്ലറി
-//         തുടക്ക നിക്ഷേപം: ₹5,000
-//         ഇപ്പോഴത്തെ മാസിക വരുമാനം: ₹45,000
-//         വിജയ രഹസ്യം: "വാട്സാപ്പ് സ്റ്റാറ്റസിൽ ദിവസേന പുതിയ ഡിസൈനുകൾ ഇടുന്നു. ഉപഭോക്താക്കളുമായി മലയാളത്തിൽ സംസാരിക്കുന്നു."
-      
-
-//       ലീലയുടെ കഥ - തിരുവനന്തപുരം
-      
-//         ബിസിനസ്: ഹോം മേഡ് ഫുഡ് പ്രൊഡക്ട്സ്
-//         തുടക്ക നിക്ഷേപം: ₹10,000
-//         ഇപ്പോഴത്തെ മാസിക വരുമാനം: ₹60,000
-//         വിജയ രഹസ്യം: "കേരളത്തിലെ പരമ്പരാഗത അച്ചാറുകളും പപ്പടവും ഓൺലൈൻ വിൽക്കുന്നു. രുചി ഉറപ്പുവരുത്തിയതിനാൽ റിപീറ്റ് കസ്റ്റമേഴ്സ് കൂടുതലാണ്."
-      
-
-//       പ്രിയയുടെ കഥ - കോഴിക്കോട്
-      
-//         ബിസിനസ്: കിഡ്സ് ഡ്രസ്സുകൾ
-//         തുടക്ക നിക്ഷേപം: ₹8,000
-//         ഇപ്പോഴത്തെ മാസിക വരുമാനം: ₹35,000
-//         വിജയ രഹസ്യം: "കുട്ടികളുടെ സൈസനുസരിച്ച് കസ്റ്റമൈസ് ചെയ്ത് നൽകുന്നു. ഇൻസ്റ്റഗ്രാമിൽ ഫോട്ടോഷൂട്ട് ചെയ്ത് പോസ്റ്റ് ചെയ്യുന്നു."
-      
-
-//       ഹോം ബിസിനസ് ഐഡിയകൾ
-
-//       കുറഞ്ഞ നിക്ഷേപത്തിൽ (₹5,000 - ₹15,000)
-      
-//         ഹാൻഡ്‌മേഡ് ക്രാഫ്റ്റ്സ്: ജ്വല്ലറി, ഡെക്കറേഷൻ ഐറ്റംസ്
-//         ഫുഡ് പ്രൊഡക്ട്സ്: അച്ചാറുകൾ, പപ്പടം, സ്നാക്സ്
-//         ഡ്രസ്സ് മേക്കിംഗ്: കുട്ടികളുടെ വസ്ത്രങ്ങൾ, ബ്ലൗസ് തയ്യൽ
-//         കോസ്മെറ്റിക്സ്: ഹോം മേഡ് സോപ്പ്, ഫേസ് പാക്ക്
-      
-
-//       ഇടത്തരം നിക്ഷേപത്തിൽ (₹15,000 - ₹50,000)
-      
-//         ഓൺലൈൻ റീസെല്ലിംഗ്: വസ്ത്രങ്ങൾ, കോസ്മെറ്റിക്സ്
-//         പ്ലാന്റ് നഴ്സറി: ചെറിയ ചെടികൾ, സീഡ്സ്
-//         കേക്ക് ബിസിനസ്: ബർത്ത്ഡേ കേക്കുകൾ, ഇവന്റ് കേക്കുകൾ
-//         ട്യൂഷൻ സെന്റർ: ഓൺലൈൻ ക്ലാസുകൾ
-      
-
-//       വിജയത്തിനുള്ള സ്റ്റെപ്സ്
-
-//       1. ആസൂത്രണം
-      
-//         നിങ്ങളുടെ സ്കിൽ കണ്ടുപിടിക്കുക
-//         മാർക്കറ്റ് റിസർച്ച് നടത്തുക
-//         ബഡ്ജറ്റ് തയ്യാറാക്കുക
-//         ടാർഗറ്റ് കസ്റ്റമേഴ്സ് ഐഡന്റിഫൈ ചെയ്യുക
-      
-
-//       2. സെറ്റപ്പ്
-      
-//         വർക്ക് സ്പേസ് ഒരുക്കുക
-//         ആവശ്യമായ മെറ്റീരിയലുകൾ വാങ്ങുക
-//         ഫോൺ നമ്പർ, ബാങ്ക് അക്കൗണ്ട് തയ്യാറാക്കുക
-//         സോഷ്യൽ മീഡിയ അക്കൗണ്ടുകൾ സൃഷ്ടിക്കുക
-      
-
-//       3. മാർക്കറ്റിംഗ്
-      
-//         വാട്സാപ്പ് സ്റ്റാറ്റസിൽ ദിവസേന അപ്ഡേറ്റ്
-//         ഇൻസ്റ്റഗ്രാമിൽ നല്ല ഫോട്ടോകൾ പോസ്റ്റ് ചെയ്യുക
-//         ഫ്രണ്ട്സ് ആൻഡ് ഫാമിലിയിൽ നിന്ന് തുടങ്ങുക
-//         കസ്റ്റമർ റിവ്യൂകൾ ഷെയർ ചെയ്യുക
-      
-
-//       പൊതു വെല്ലുവിളികളും പരിഹാരങ്ങളും
-
-//       വെല്ലുവിളി 1: സമയക്കുറവ്
-//       പരിഹാരം: ദിവസത്തിൽ 2-3 മണിക്കൂർ നിശ്ചിത സമയം നീക്കിവെക്കുക. വാരാന്ത്യങ്ങളിൽ കൂടുതൽ ജോലി ചെയ്യുക.
-
-//       വെല്ലുവിളി 2: കസ്റ്റമർ വിശ്വാസം
-//       പരിഹാരം: ആദ്യം അടുത്തറിയുന്നവർക്ക് വിറ്റ് അവരുടെ റിവ്യൂ ഷെയർ ചെയ്യുക. നല്ല ഫോട്ടോകളും വീഡിയോകളും പോസ്റ്റ് ചെയ്യുക.
-
-//       വെല്ലുവിളി 3: മത്സരം
-//       പരിഹാരം: നിങ്ങളുടെ പ്രൊഡക്ടിന്റെ യൂണിക് സെല്ലിംഗ് പോയിന്റ് കണ്ടുപിടിക്കുക. കസ്റ്റമൈസേഷൻ വാഗ്ദാനം ചെയ്യുക.
-
-//       ഫിനാൻഷ്യൽ ടിപ്സ്
-      
-//         ബിസിനസ് വരുമാനവും വീട്ടുചിലവും വേർതിരിക്കുക
-//         എല്ലാ ട്രാൻസാക്ഷനുകളും റെക്കോർഡ് ചെയ്യുക
-//         ലാഭത്തിന്റെ 20% സേവിംഗ്സിനായി മാറ്റിവെക്കുക
-//         GST രജിസ്ട്രേഷൻ ആവശ്യമുണ്ടോ എന്ന് പരിശോധിക്കുക
-      
-
-//       ഡിജിറ്റൽ പ്രസൻസ്
-
-//       സോഷ്യൽ മീഡിയ സ്ട്രാറ്റജി
-      
-//         വാട്സാപ്പ്: പ്രധാന സെയിൽസ് ടൂൾ
-//         ഇൻസ്റ്റഗ്രാം: വിഷ്വൽ മാർക്കറ്റിംഗ്
-//         ഫേസ്ബുക്ക്: കമ്മ്യൂണിറ്റി ബിൽഡിംഗ്
-//         യൂട്യൂബ്: ട്യൂട്ടോറിയൽ വീഡിയോകൾ
-      
-
-//       വിജയത്തിനുള്ള മന്ത്രങ്ങൾ
-      
-//         ഉറക്കെ സ്വപ്നം കാണുക, പക്ഷേ ചെറുതായി തുടങ്ങുക
-//         കസ്റ്റമർ സാറ്റിസ്ഫാക്ഷൻ ആദ്യ പ്രാധാന്യം
-//         തുടർച്ചയായ പ്രയത്നം വിജയത്തിന്റെ താക്കോൽ
-//         പുതിയ കാര്യങ്ങൾ പഠിക്കാൻ തയ്യാറാവുക
-//         പരാജയത്തെ പാഠമായി കാണുക
-      
-
-//       സഹായ സ്രോതസ്സുകൾ
-      
-//         കുടുംബശ്രീ: വായ്പ സഹായവും പരിശീലനവും
-//         ബാങ്കുകൾ: മുദ്ര ലോൺ, സ്ത്രീ ശക്തി സ്കീമുകൾ
-//         ഓൺലൈൻ കോഴ്സുകൾ: ഡിജിറ്റൽ മാർക്കറ്റിംഗ് പഠിക്കാൻ
-//         ലോക്കൽ നെറ്റ്വർക്കുകൾ: ബിസിനസ് വിമൻ അസോസിയേഷനുകൾ
-      
-
-//       നിഗമനം
-//       കേരളത്തിലെ സ്ത്രീകൾക്ക് ഹോം ബിസിനസിലൂടെ സാമ്പത്തിക സ്വാതന്ത്ര്യം നേടാൻ കഴിയും. ആത്മവിശ്വാസവും കഠിനാധ്വാനവും കൊണ്ട് ഏത് സ്വപ്നവും സാധ്യമാക്കാം. ചെറിയ ഒരു തുടക്കം ഇന്നേ ഉണ്ടാക്കൂ!
-//     `,
-//     readTime: "8-10 min read",
-//     category: "Success Stories",
-//     date: "2025-01-03",
-//     image: "/blog-5.png",
-//     slug: "kerala-home-business-success",
-//     views: "1.9k",
-//     likes: 98,
-//     author: "വിജയ സുകുമാരൻ"
-//   },
-//   {
-//     id: 6,
-//     title: "Festival Season Selling: Maximize Your Kerala Store Revenue",
-//     description: "Complete playbook for Kerala sellers to boost sales during Onam, Vishu, Christmas and other festival seasons.",
-//     content: `
-//       Kerala's Festival Economy
-//       Kerala's festival seasons drive 40% of annual retail sales. From Onam's grandeur to Christmas celebrations, each festival presents unique opportunities for sellers to maximize revenue.
-
-//       Major Revenue Seasons
-      
-//         Onam (Aug-Sep): ₹15,000 crore market
-//         Christmas-New Year (Dec-Jan): ₹8,000 crore market
-//         Vishu (Apr): ₹5,000 crore market
-//         Easter (Mar-Apr): ₹3,000 crore market
-      
-
-//       Onam Strategy: The Big Winner
-//       Onam is Kerala's biggest shopping season. Sales typically increase 300-500% during this period.
-
-//       Pre-Onam Planning (July)
-      
-//         Inventory Planning: Stock up on sarees, jewelry, home decor
-//         Design Themes: Traditional Kerala motifs, gold colors
-//         Marketing Materials: Prepare Onam-specific graphics
-//         Supplier Coordination: Ensure timely delivery of festival items
-      
-
-      
-//         Onam Product Categories & Expected Sales Boost
-        
-//           Traditional Sarees: 400% increase
-//           Gold Jewelry: 350% increase
-//           Home Decor: 300% increase
-//           Traditional Snacks: 500% increase
-//           Pookalam Materials: 600% increase
-        
-      
-
-//       Onam Marketing Calendar
-      
-//         15 days before: Teaser posts, "Coming Soon" content
-//         10 days before: Launch Onam collection
-//         5 days before: Flash sales, limited time offers
-//         Day of Onam: Last-minute gift suggestions
-//         Post-Onam: Thank you posts, customer photos
-      
-
-//       Christmas & New Year Strategy
-//       Kerala's Christian community and secular celebrations make this the second-biggest shopping season.
-
-//       Product Focus Areas
-      
-//         Party Wear: Dresses, suits, accessories
-//         Gifts: Personalized items, gift hampers
-//         Home Decoration: Lights, stars, trees
-//         Food Items: Cakes, wine, special treats
-      
-
-//       Christmas Marketing Tactics
-      
-//         Gift Marketing Messages
-//         English: "Perfect Christmas gifts for your loved ones! Free gift wrapping with every purchase."
-//         Malayalam: "നിങ്ങളുടെ പ്രിയപ്പെട്ടവർക്കായി മനോഹരമായ ക്രിസ്മസ് സമ്മാനങ്ങൾ! എല്ലാ വാങ്ങലിനും സൗജന്യ ഗിഫ്റ്റ് റാപ്പിംഗ്."
-      
-
-//       Vishu Revenue Maximization
-//       Vishu represents new beginnings and is perfect for launching new product lines.
-
-//       Vishu-Specific Strategies
-      
-//         Vishukkani Products: Traditional items for the ritual
-//         New Clothes: Everyone buys new clothes for Vishu
-//         Gold Items: Small jewelry pieces, coins
-//         Books & Stationery: For students starting new academic year
-      
-
-//       Multi-Festival Content Strategy
-
-//       Content Types That Work
-      
-//         Festival History Posts: Share the significance of each festival
-//         Traditional vs Modern: Show how to blend tradition with contemporary style
-//         Styling Videos: How to drape a saree, style jewelry
-//         Behind-the-Scenes: Making traditional items, packaging gifts
-//         Customer Stories: How your products made their festival special
-      
-
-//       Festival-Specific Hashtags
-      
-//         Onam: #OnamCollection #KeralaTradition #OnamSarees #PookkalamSpecial
-//         Christmas: #ChristmasSpecial #KeralaChristmas #HolidayGifts #ChristmasInKerala
-//         Vishu: #VishuSpecial #NewBeginnings #VishuShopping #KeralaNewYear
-//         Easter: #EasterCollection #SpringFashion #EasterGifts #KeralaCelebration
-      
-
-//       Pricing Strategies for Festivals
-
-//       Dynamic Pricing Calendar
-      
-//         2 months before: Regular pricing
-//         1 month before: Early bird discounts (10-15%)
-//         2 weeks before: Standard festival pricing
-//         1 week before: Premium pricing (demand peaks)
-//         Day after festival: Clearance sales (30-50% off)
-      
-
-//       Bundle Strategies
-      
-//         Onam Bundle: Saree + Jewelry + Hair accessories
-//         Christmas Bundle: Dress + Shoes + Accessories
-//         Vishu Bundle: Traditional wear + Books + Gold coin
-//         Home Decor Bundle: Multiple items for complete setup
-      
-
-//       Inventory Management
-
-//       Festival Stock Planning
-      
-//         Onam Inventory Checklist
-        
-//           Traditional sarees: 50-100 pieces (various price ranges)
-//           Gold-plated jewelry: 20-30 sets
-//           Pookalam flowers: Fresh daily supply arranged
-//           Traditional brass items: 15-25 pieces
-//           Onam special food items: Pre-order based
-        
-      
-
-//       Customer Communication During Festivals
-
-//       WhatsApp Message Templates
-      
-//         Onam Greeting:
-//         "Happy Onam! 🌼 May this festival bring prosperity to your home. Check out our exclusive Onam collection - traditional sarees, jewelry, and home decor. Early bird discount 15% till [date]. WhatsApp us for catalog!"
-        
-//         Malayalam Version:
-//         "ഓണാശംസകൾ! 🌼 ഈ ഓണം നിങ്ങളുടെ വീട്ടിൽ സമൃദ്ധി കൊണ്ടുവരട്ടെ. ഞങ്ങളുടെ പ്രത്യേക ഓണ കളക്ഷൻ കാണുക - പരമ്പരാഗത സാരികൾ, ആഭരണങ്ങൾ, വീട് അലങ്കാരം. [തീയതി] വരെ 15% കിഴിവ്!"
-      
-
-//       Post-Festival Analysis
-      
-//         Track which products sold best
-//         Analyze customer feedback
-//         Calculate ROI for marketing spend
-//         Plan improvements for next year
-//         Build customer database for next festival season
-      
-
-//       Success Metrics to Track
-      
-//         Sales Volume: Units sold vs previous year
-//         Revenue Growth: Total revenue increase
-//         Customer Acquisition: New customers gained
-//         Repeat Purchase Rate: Customers who buy multiple items
-//         Average Order Value: Revenue per transaction
-      
-
-//       Year-Round Festival Preparation
-//       Smart Kerala sellers prepare for festivals throughout the year:
-      
-//         January: Plan for upcoming festivals
-//         March: Start Vishu preparations
-//         June: Begin Onam planning and sourcing
-//         October: Christmas inventory building
-//         December: Plan next year's festival calendar
-      
-
-//       Common Mistakes to Avoid
-      
-//         Starting festival marketing too late
-//         Underestimating demand and running out of stock
-//         Not having backup suppliers
-//         Ignoring regional preferences within Kerala
-//         Not preparing for post-festival sales
-      
-
-//       Conclusion
-//       Festival seasons in Kerala offer unparalleled opportunities for revenue growth. With proper planning, targeted marketing, and understanding of local culture, sellers can achieve 3-5x revenue growth during these periods. Start planning your next festival strategy today!
-//     `,
-//     readTime: "6-8 min read",
-//     category: "Seasonal Strategy",
-//     date: "2024-12-28",
-//     image: "/blog-6.png",
-//     slug: "festival-season-selling-kerala",
-//     views: "2.8k",
-//     likes: 167,
-//     author: "KeralaSellers Team"
-//   }
+  }
 ];
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find(p => p.slug === params.slug);
+interface BlogPostClientProps {
+  slug: string;
+}
+
+export default function BlogPostClient({ slug }: BlogPostClientProps) {
+  const post = blogPosts.find(p => p.slug === slug);
   const [likes, setLikes] = useState(post?.likes || 0);
   const [isLiked, setIsLiked] = useState(false);
   const [shareMenuOpen, setShareMenuOpen] = useState(false);
@@ -775,8 +294,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   useEffect(() => {
     setMounted(true);
     // Check if user has liked this post before (using localStorage)
-    const likedPosts = JSON.parse(localStorage.getItem('likedPosts') || '[]');
-    setIsLiked(likedPosts.includes(post?.slug));
+    if (typeof window !== 'undefined') {
+      const likedPosts = JSON.parse(localStorage.getItem('likedPosts') || '[]');
+      setIsLiked(likedPosts.includes(post?.slug));
+    }
   }, [post?.slug]);
 
   if (!post) {
@@ -784,13 +305,15 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   }
 
   const handleLike = () => {
+    if (typeof window === 'undefined') return;
+    
     const likedPosts = JSON.parse(localStorage.getItem('likedPosts') || '[]');
     
     if (isLiked) {
       // Unlike
       setLikes(likes - 1);
       setIsLiked(false);
-      const updatedLikedPosts = likedPosts.filter((slug: string) => slug !== post.slug);
+      const updatedLikedPosts = likedPosts.filter((postSlug: string) => postSlug !== post.slug);
       localStorage.setItem('likedPosts', JSON.stringify(updatedLikedPosts));
     } else {
       // Like
@@ -802,6 +325,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   };
 
   const handleShare = async (platform?: string) => {
+    if (typeof window === 'undefined') return;
+    
     const shareData = {
       title: post.title,
       text: post.description,
@@ -904,6 +429,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </div>
         </header>
 
+        {/* Rest of your component exactly as it was... */}
         {/* Article Header */}
         <section className={`container mx-auto px-4 py-8 md:py-12 transition-all duration-1000 ${mounted ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`}>
           <div className="max-w-4xl mx-auto">
@@ -970,11 +496,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         <article className="container mx-auto px-4 pb-12">
           <div className="max-w-4xl mx-auto">
            <div 
-  className="prose prose-lg max-w-none animate-fade-in-up px-4 md:px-0"
-  style={{animationDelay: '800ms'}}
-  dangerouslySetInnerHTML={{ __html: post.content }}
-/>
-
+              className="prose prose-lg max-w-none animate-fade-in-up px-4 md:px-0"
+              style={{animationDelay: '800ms'}}
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
 
             {/* Article Footer with Working Buttons */}
             <div className="border-t border-gray-200 pt-8 mt-12 animate-fade-in-up" style={{animationDelay: '1000ms'}}>
@@ -1156,6 +681,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </div>
         </footer>
       </div>
+    </>
+  );
+}
 
 <style jsx>{`
   @keyframes fadeIn {
