@@ -1,0 +1,1570 @@
+
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  ArrowLeft,
+  Clock,
+  Calendar,
+  User,
+  Share2,
+  Heart,
+  BookOpen,
+  TrendingUp,
+  ChevronRight,
+  MapPin,
+  Target,
+  CheckCircle,
+  Camera,
+  MessageCircle,
+  Smartphone,
+  BarChart3,
+  ArrowRight,
+  Copy,
+  Facebook,
+  Twitter,
+  Linkedin,
+  X,
+} from "lucide-react";
+
+// Blog posts data - same as in main blog page
+const blogPosts = [
+  {
+    id: 1,
+    title: "How Kerala Sellers Can Grow Sales Using WhatsApp in 2025",
+    description: "A practical guide for Kerala sellers to grow online sales with WhatsApp catalogs, Malayalam product descriptions, and zero-commission stores.",
+    content: `
+      Why WhatsApp Works in Kerala
+      Most buyers browse on phones, discover through Status or Instagram, and complete orders after a quick chat. A clear catalog, quick replies, and trusted local delivery are the pillars of conversions.
+      
+      Key advantages
+      
+        Mobile-first discovery and conversations
+        Trust via direct chat and local language
+        Fast sharing through Status, Broadcast, and Groups
+      
+
+      Step-by-Step: Set Up a High-Converting Catalog
+      
+        Create product sheets with 3–5 clear photos each. Use a neutral background and show scale or use context.
+        Write short titles in Malayalam/English and add 3–4 bullet benefits plus price.
+        Include delivery options, payment modes (UPI/QR), and return policy in the catalog description.
+        Pin best-sellers on top and use Collections for sarees, spices, handicrafts, etc.
+      
+
+      Daily Status Plan (7 Days)
+      
+        Mon: New arrivals (3–5 slides) + price range
+        Tue: Behind-the-scenes packing + trust badge
+        Wed: Customer review screenshot (with consent)
+        Thu: Bundle offer (Buy 2 get 5% off)
+        Fri: "Only 5 left" urgency post
+        Sat: City-specific delivery update (Kochi/TVM)
+        Sun: Bestseller recap + next-week teaser
+      
+
+      Response Speed and Scripts
+      Reply within 5 minutes during peak hours. Use quick replies for speed.
+      
+      
+        English: Hi! Thanks for your message. This item is in stock. Kerala delivery in 2–4 days. UPI available. Would you like to place the order now?
+        Malayalam: ഹായ്! മെസേജിന് നന്ദി. ഈ ഉൽപ്പന്നം സ്റ്റോക്കിലുണ്ട്. കേരള ഡെലിവറി 2–4 ദിവസം. UPI ലഭ്യം. ഇപ്പോൾ ഓർഡർ ചെയ്യട്ടേ?
+      
+
+      Photos That Convert
+      
+        Natural light near a window
+        Neutral background; crop distractions
+        Add a hand for scale; show texture
+        1 lifestyle shot (use case) per item
+      
+
+      Turn Chats into Orders
+      
+        Share a short order summary: item, price, delivery city, payment mode.
+        Provide QR/UPI or COD; confirm address with a single message template.
+        Send delivery ETA and a thank-you note to encourage repeat orders.
+      
+
+      Conclusion
+      WhatsApp is Kerala's most natural path from discovery to purchase. Combine clean catalogs, fast responses, and clear delivery to turn DMs into daily orders. Launch a zero-commission store with KeralaSellers.in and keep every rupee of profit while growing statewide.
+    `,
+    readTime: "8-10 min read",
+    category: "WhatsApp Commerce",
+    date: "2025-01-15",
+    image: "/hero.png",
+    slug: "whatsapp-commerce-kerala-2025",
+    views: "2.5k",
+    likes: 156,
+    author: "KeralaSellers Team"
+  },
+  {
+    id: 2,
+    title: "മലയാളത്തിൽ ഓൺലൈൻ വിൽപ്പന: സമ്പൂർണ്ണ ഗൈഡ്",
+    description: "കേരളത്തിലെ വിൽപ്പനക്കാർക്കായി മലയാളത്തിൽ ഓൺലൈൻ സ്റ്റോർ തുടങ്ങാനുള്ള സമ്പൂർണ്ണ മാർഗനിർദേശം.",
+    content: `
+      ഓൺലൈൻ വിൽപ്പന എന്തുകൊണ്ട് ആവശ്യം?
+      കേരളത്തിൽ ഇന്ന് 90% ഷോപ്പിംഗും മൊബൈൽ ഫോണിലാണ് നടക്കുന്നത്. വാട്സാപ്പ്, ഇൻസ്റ്റഗ്രാം എന്നിവയിലൂടെ ഉപഭോക്താക്കൾ ഉൽപ്പന്നങ്ങൾ കണ്ടെത്തുകയും വാങ്ങുകയും ചെയ്യുന്നു.
+
+      പ്രധാന നേട്ടങ്ങൾ
+      
+        കേരളത്തിലെ എല്ലാ ജില്ലകളിലും എത്തിക്കാം
+        കമ്മീഷൻ ഇല്ലാതെ 100% ലാഭം സ്വന്തമാക്കാം
+        മലയാളത്തിൽ ഉപഭോക്താക്കളുമായി സംസാരിക്കാം
+        വീട്ടിൽ നിന്ന് തന്നെ ബിസിനസ് നടത്താം
+      
+
+      എങ്ങനെ തുടങ്ങാം?
+      
+        ഉൽപ്പന്ന ഫോട്ടോകൾ: നല്ല വെളിച്ചത്തിൽ 3-5 ഫോട്ടോകൾ എടുക്കുക
+        വിവരണം: മലയാളത്തിലും ഇംഗ്ലീഷിലും ഉൽപ്പന്ന വിവരങ്ങൾ എഴുതുക
+        വില നിശ്ചയിക്കുക: മാർക്കറ്റ് റേറ്റും ഡെലിവറി ചാർജും കൂടെ ചേർക്കുക
+        വാട്സാപ്പ് നമ്പർ: ബിസിനസ് അക്കൗണ്ട് സെറ്റപ്പ് ചെയ്യുക
+      
+
+      വാട്സാപ്പ് സ്റ്റാറ്റസ് ടിപ്സ്
+      
+        തിങ്കൾ: പുതിയ ഉൽപ്പന്നങ്ങളുടെ ഫോട്ടോകൾ
+        ചൊവ്വ: പാക്കിംഗ് വീഡിയോ
+        ബുധൻ: കസ്റ്റമർ റിവ്യൂ
+        വ്യാഴം: ഓഫർ പോസ്റ്റ്
+        വെള്ളി: സ്റ്റോക്ക് ലിമിറ്റഡ് പോസ്റ്റ്
+      
+
+      ഓർഡർ എങ്ങനെ എടുക്കാം?
+      വാട്സാപ്പിൽ വന്ന മെസേജിന് 5 മിനിറ്റിനുള്ളിൽ മറുപടി നൽകുക. UPI, GPay, PhonePe എന്നിവയിലൂടെ പേയ്മെന്റ് സ്വീകരിക്കുക.
+
+      
+        സാമ്പിൾ മെസേജ്:
+        "ഹലോ! മെസേജിന് നന്ദി. ഈ ഉൽപ്പന്നം സ്റ്റോക്കിലുണ്ട്. കേരളയിൽ 2-4 ദിവസംകൊണ്ട് എത്തിക്കാം. UPI പേയ്മെന്റ് സ്വീകരിക്കുന്നു. ഓർഡർ ചെയ്യാൻ വിലാസം അയച്ചുതരാമോ?"
+      
+
+      വിജയത്തിനുള്ള മന്ത്രം
+      
+        എല്ലാ ദിവസവും സ്റ്റാറ്റസ് അപ്ഡേറ്റ് ചെയ്യുക
+        കസ്റ്റമറുമായി മലയാളത്തിൽ സംസാരിക്കുക
+        നല്ല ഫോട്ടോകൾ എടുത്ത് പോസ്റ്റ് ചെയ്യുക
+        സമയത്ത് ഡെലിവറി ചെയ്യുക
+      
+    `,
+    readTime: "6-8 min read",
+    category: "Malayalam Guide",
+    date: "2025-01-10",
+    image: "/blog-2.png",
+    slug: "online-selling-malayalam-guide",
+    views: "1.8k",
+    likes: 89,
+    author: "കേരള സെല്ലേഴ്സ് ടീം"
+  },
+  {
+    id: 3,
+    title: "Zero Commission vs Other Platforms: Complete Comparison",
+    description: "Compare KeralaSellers with other e-commerce platforms and see why zero commission matters for Kerala sellers.",
+    content: `
+      The Commission Problem
+      Most e-commerce platforms charge 15-30% commission on every sale. For a ₹1000 product, you lose ₹150-300 before considering other costs like advertising, packaging, and shipping.
+
+      Traditional Platform Costs
+      
+        Amazon: 5-20% referral fee + 2-3% payment gateway
+        Flipkart: 5-25% commission + fixed closing fee
+        Meesho: 5-20% commission + shipping charges
+        Instagram/Facebook: 5% selling fee + payment processing
+      
+
+      Why Zero Commission Matters
+      For Kerala sellers, especially small businesses and homepreneurs, every rupee counts. Here's the math:
+
+      
+        Example: Selling Handmade Products Worth ₹50,000/month
+        
+          Traditional PlatformZero Commission
+          Revenue: ₹50,000Revenue: ₹50,000
+          Commission (15%): -₹7,500Commission: ₹0
+          Net Income: ₹42,500Net Income: ₹50,000
+          Annual Difference: ₹90,000 more with zero commission!
+        
+      
+
+      Kerala-Specific Advantages
+      Language Support
+      
+        Product descriptions in Malayalam
+        Customer support in local language
+        Better connection with Kerala customers
+      
+
+      Local Understanding
+      
+        Festival season strategies for Onam, Vishu
+        Kerala shipping and delivery networks
+        Local payment preferences (UPI, bank transfers)
+      
+
+      Platform Comparison Chart
+      
+        
+          
+            
+              Feature
+              KeralaSellers
+              Amazon
+              Flipkart
+              Meesho
+            
+          
+          
+            
+              Commission
+              0%
+              5-20%
+              5-25%
+              5-20%
+            
+            
+              Malayalam Support
+              ✓
+              ✗
+              ✗
+              ✗
+            
+            
+              WhatsApp Integration
+              ✓
+              ✗
+              ✗
+              ✗
+            
+            
+              Setup Time
+              5 minutes
+              2-3 days
+              3-5 days
+              1-2 days
+            
+          
+        
+      
+
+      Success Stories
+      
+        Priya from Kochi: "I was paying ₹8,000 monthly in commissions on other platforms. With KeralaSellers, I save that entire amount and reinvest it in better products and marketing."
+      
+
+      Making the Switch
+      Transitioning to a zero-commission platform doesn't mean losing customers. In fact, Kerala sellers report:
+      
+        Better profit margins allow for competitive pricing
+        Direct customer relationships through WhatsApp
+        More control over branding and customer experience
+        Faster payments without platform delays
+      
+
+      Conclusion
+      For Kerala sellers, the choice is clear: keep 100% of your profits with a platform built specifically for your market, or continue paying hefty commissions to generic platforms. The ₹90,000+ annual savings can be reinvested into growing your business further.
+    `,
+    readTime: "5-7 min read",
+    category: "Platform Comparison",
+    date: "2025-01-08",
+    image: "/blog-3.png",
+    slug: "zero-commission-platform-comparison",
+    views: "3.2k",
+    likes: 201,
+    author: "KeralaSellers Team"
+  },
+//   {
+//     id: 4,
+//     title: "Instagram to Sales: Kerala Seller's Complete Guide",
+//     description: "Turn your Instagram followers into paying customers with these proven strategies designed specifically for Kerala market.",
+//     content: `
+//       Instagram's Power in Kerala
+//       Kerala has one of the highest Instagram engagement rates in India. With over 3 million active users, it's a goldmine for sellers who know how to leverage it correctly.
+
+//       Why Instagram Works for Kerala Sellers
+      
+//         Visual-first platform perfect for showcasing products
+//         Strong local community engagement
+//         Easy integration with WhatsApp for sales
+//         Cost-effective compared to traditional advertising
+      
+
+//       Setting Up Your Business Profile
+      
+//         Switch to Business Account: Access analytics and promotional tools
+//         Complete Your Bio: Include what you sell, location (Kerala), and contact info
+//         Add Contact Buttons: WhatsApp, Call, Email buttons
+//         Link Your Store: Add your KeralaSellers store link
+      
+
+      
+//         Sample Bio Template:
+//         🌟 Handmade Jewelry | Kerala
+//         📱 WhatsApp for Orders
+//         🚚 All Kerala Delivery
+//         💎 Custom Orders Available
+//         👇 Shop Link Below
+      
+
+//       Content Strategy for Kerala Market
+
+//       Post Types That Convert
+      
+//         Product Showcases: High-quality photos with local backgrounds
+//         Behind-the-Scenes: Making process, packaging
+//         Customer Reviews: Video testimonials from Kerala customers
+//         Local Events: Onam collections, festival specials
+//         Educational Content: How to care for products, styling tips
+      
+
+//       Kerala-Specific Hashtag Strategy
+      
+//         Local Tags: #Kerala #Kochi #Trivandrum #Kozhikode #Thrissur
+//         Product Tags: #KeralaSarees #HandmadeKerala #KeralaSpices
+//         Community Tags: #MalayaliMade #KeralaSmallBusiness #SupportLocal
+//         Festival Tags: #OnamSpecial #VishuCollection #KeralaFestival
+      
+
+//       Instagram Stories Strategy
+//       Stories have 500+ million daily users. Use them for:
+      
+//         Quick Updates: New arrivals, restocks
+//         Flash Sales: Limited time offers
+//         Polls: Ask followers what they want to see
+//         Q&A: Answer product questions
+//         Behind-the-Scenes: Daily business activities
+      
+
+//       Converting Followers to Sales
+
+//       The Instagram to WhatsApp Funnel
+      
+//         Attention: Eye-catching post or story
+//         Interest: Detailed product description in comments
+//         Desire: Show social proof, reviews
+//         Action: "DM for price" or "WhatsApp for orders"
+      
+
+//       Call-to-Action Examples
+      
+//         "WhatsApp us for current prices 📱"
+//         "DM for customization options 💬"
+//         "Link in bio to browse full collection 🛍️"
+//         "Story highlight for size chart 📏"
+      
+
+//       Building Kerala Community
+
+//       Engagement Tactics
+      
+//         Local Collaborations: Partner with Kerala influencers
+//         User-Generated Content: Repost customer photos
+//         Kerala Pride Posts: Celebrate local culture
+//         Community Challenges: #MyKeralaStyle contests
+      
+
+//       Timing Your Posts
+//       Best posting times for Kerala audience:
+      
+//         Weekdays: 7-9 AM, 12-2 PM, 7-9 PM
+//         Weekends: 10 AM-12 PM, 3-5 PM, 8-10 PM
+//         Festival Season: Post 2-3 times daily
+      
+
+//       Instagram Shopping Features
+//       Set up Instagram Shopping to tag products directly:
+      
+//         Connect your KeralaSellers catalog
+//         Tag products in posts and stories
+//         Enable shopping in your bio
+//         Use product stickers in stories
+      
+
+//       Measuring Success
+
+//       Key Metrics to Track
+      
+//         Reach: How many Kerala users see your content
+//         Engagement Rate: Likes, comments, shares per post
+//         Profile Visits: People checking your business
+//         Website Clicks: Traffic to your store
+//         WhatsApp Messages: Direct sales inquiries
+      
+
+//       Common Mistakes to Avoid
+      
+//         Posting only product photos without context
+//         Ignoring comments and DMs
+//         Using too many irrelevant hashtags
+//         Not posting consistently
+//         Forgetting to add location tags
+      
+
+//       Success Story
+      
+//         Meera's Handloom, Palakkad: Started with 200 followers, now has 15K+ and makes ₹80K monthly revenue. Key: Consistent posting, local hashtags, and quick WhatsApp responses.
+      
+
+//       Action Plan
+      
+//         Switch to business account today
+//         Optimize your bio with Kerala keywords
+//         Plan 1 week of content in advance
+//         Research and save 30 relevant hashtags
+//         Post daily for the first month
+//         Respond to all DMs within 2 hours
+//         Track metrics weekly
+      
+//     `,
+//     readTime: "7-9 min read",
+//     category: "Social Media",
+//     date: "2025-01-05",
+//     image: "/blog-4.png",
+//     slug: "instagram-sales-kerala-guide",
+//     views: "2.1k",
+//     likes: 134,
+//     author: "Digital Marketing Team"
+//   },
+//   {
+//     id: 5,
+//     title: "കേരളത്തിലെ ഹോം ബിസിനസ്: വിജയകരമായ തുടക്കം",
+//     description: "വീട്ടിൽ നിന്ന് ചെറിയ ബിസിനസ് തുടങ്ങി വിജയിച്ച കേരളത്തിലെ സ്ത്രീകളുടെ കഥകളും ടിപ്സും.",
+//     content: `
+//       ഹോം ബിസിനസ് - കേരളത്തിലെ പുതിയ ട്രെൻഡ്
+//       കോവിഡിനു ശേഷം കേരളത്തിൽ വീട്ടിൽ നിന്നുള്ള ബിസിനസ് 300% വർധിച്ചിട്ടുണ്ട്. പ്രത്യേകിച്ച് സ്ത്രീകൾ ഈ മേഖലയിൽ മികച്ച പ്രകടനം കാഴ്ചവെക്കുന്നു.
+
+//       എന്തുകൊണ്ട് ഹോം ബിസിനസ്?
+      
+//         കുറഞ്ഞ നിക്ഷേപത്തിൽ തുടങ്ങാം
+//         വീട്ടുകാര്യങ്ങളും ബിസിനസും ഒരുമിച്ച് നോക്കാം
+//         സ്വന്തം സമയത്തിനനുസരിച്ച് പ്രവർത്തിക്കാം
+//         കുടുംബത്തിന്റെ സഹായം ലഭിക്കും
+      
+
+//       വിജയകഥകൾ
+
+//       രേശ്മയുടെ കഥ - എറണാകുളം
+      
+//         ബിസിനസ്: ഹാൻഡ്‌മേഡ് ജ്വല്ലറി
+//         തുടക്ക നിക്ഷേപം: ₹5,000
+//         ഇപ്പോഴത്തെ മാസിക വരുമാനം: ₹45,000
+//         വിജയ രഹസ്യം: "വാട്സാപ്പ് സ്റ്റാറ്റസിൽ ദിവസേന പുതിയ ഡിസൈനുകൾ ഇടുന്നു. ഉപഭോക്താക്കളുമായി മലയാളത്തിൽ സംസാരിക്കുന്നു."
+      
+
+//       ലീലയുടെ കഥ - തിരുവനന്തപുരം
+      
+//         ബിസിനസ്: ഹോം മേഡ് ഫുഡ് പ്രൊഡക്ട്സ്
+//         തുടക്ക നിക്ഷേപം: ₹10,000
+//         ഇപ്പോഴത്തെ മാസിക വരുമാനം: ₹60,000
+//         വിജയ രഹസ്യം: "കേരളത്തിലെ പരമ്പരാഗത അച്ചാറുകളും പപ്പടവും ഓൺലൈൻ വിൽക്കുന്നു. രുചി ഉറപ്പുവരുത്തിയതിനാൽ റിപീറ്റ് കസ്റ്റമേഴ്സ് കൂടുതലാണ്."
+      
+
+//       പ്രിയയുടെ കഥ - കോഴിക്കോട്
+      
+//         ബിസിനസ്: കിഡ്സ് ഡ്രസ്സുകൾ
+//         തുടക്ക നിക്ഷേപം: ₹8,000
+//         ഇപ്പോഴത്തെ മാസിക വരുമാനം: ₹35,000
+//         വിജയ രഹസ്യം: "കുട്ടികളുടെ സൈസനുസരിച്ച് കസ്റ്റമൈസ് ചെയ്ത് നൽകുന്നു. ഇൻസ്റ്റഗ്രാമിൽ ഫോട്ടോഷൂട്ട് ചെയ്ത് പോസ്റ്റ് ചെയ്യുന്നു."
+      
+
+//       ഹോം ബിസിനസ് ഐഡിയകൾ
+
+//       കുറഞ്ഞ നിക്ഷേപത്തിൽ (₹5,000 - ₹15,000)
+      
+//         ഹാൻഡ്‌മേഡ് ക്രാഫ്റ്റ്സ്: ജ്വല്ലറി, ഡെക്കറേഷൻ ഐറ്റംസ്
+//         ഫുഡ് പ്രൊഡക്ട്സ്: അച്ചാറുകൾ, പപ്പടം, സ്നാക്സ്
+//         ഡ്രസ്സ് മേക്കിംഗ്: കുട്ടികളുടെ വസ്ത്രങ്ങൾ, ബ്ലൗസ് തയ്യൽ
+//         കോസ്മെറ്റിക്സ്: ഹോം മേഡ് സോപ്പ്, ഫേസ് പാക്ക്
+      
+
+//       ഇടത്തരം നിക്ഷേപത്തിൽ (₹15,000 - ₹50,000)
+      
+//         ഓൺലൈൻ റീസെല്ലിംഗ്: വസ്ത്രങ്ങൾ, കോസ്മെറ്റിക്സ്
+//         പ്ലാന്റ് നഴ്സറി: ചെറിയ ചെടികൾ, സീഡ്സ്
+//         കേക്ക് ബിസിനസ്: ബർത്ത്ഡേ കേക്കുകൾ, ഇവന്റ് കേക്കുകൾ
+//         ട്യൂഷൻ സെന്റർ: ഓൺലൈൻ ക്ലാസുകൾ
+      
+
+//       വിജയത്തിനുള്ള സ്റ്റെപ്സ്
+
+//       1. ആസൂത്രണം
+      
+//         നിങ്ങളുടെ സ്കിൽ കണ്ടുപിടിക്കുക
+//         മാർക്കറ്റ് റിസർച്ച് നടത്തുക
+//         ബഡ്ജറ്റ് തയ്യാറാക്കുക
+//         ടാർഗറ്റ് കസ്റ്റമേഴ്സ് ഐഡന്റിഫൈ ചെയ്യുക
+      
+
+//       2. സെറ്റപ്പ്
+      
+//         വർക്ക് സ്പേസ് ഒരുക്കുക
+//         ആവശ്യമായ മെറ്റീരിയലുകൾ വാങ്ങുക
+//         ഫോൺ നമ്പർ, ബാങ്ക് അക്കൗണ്ട് തയ്യാറാക്കുക
+//         സോഷ്യൽ മീഡിയ അക്കൗണ്ടുകൾ സൃഷ്ടിക്കുക
+      
+
+//       3. മാർക്കറ്റിംഗ്
+      
+//         വാട്സാപ്പ് സ്റ്റാറ്റസിൽ ദിവസേന അപ്ഡേറ്റ്
+//         ഇൻസ്റ്റഗ്രാമിൽ നല്ല ഫോട്ടോകൾ പോസ്റ്റ് ചെയ്യുക
+//         ഫ്രണ്ട്സ് ആൻഡ് ഫാമിലിയിൽ നിന്ന് തുടങ്ങുക
+//         കസ്റ്റമർ റിവ്യൂകൾ ഷെയർ ചെയ്യുക
+      
+
+//       പൊതു വെല്ലുവിളികളും പരിഹാരങ്ങളും
+
+//       വെല്ലുവിളി 1: സമയക്കുറവ്
+//       പരിഹാരം: ദിവസത്തിൽ 2-3 മണിക്കൂർ നിശ്ചിത സമയം നീക്കിവെക്കുക. വാരാന്ത്യങ്ങളിൽ കൂടുതൽ ജോലി ചെയ്യുക.
+
+//       വെല്ലുവിളി 2: കസ്റ്റമർ വിശ്വാസം
+//       പരിഹാരം: ആദ്യം അടുത്തറിയുന്നവർക്ക് വിറ്റ് അവരുടെ റിവ്യൂ ഷെയർ ചെയ്യുക. നല്ല ഫോട്ടോകളും വീഡിയോകളും പോസ്റ്റ് ചെയ്യുക.
+
+//       വെല്ലുവിളി 3: മത്സരം
+//       പരിഹാരം: നിങ്ങളുടെ പ്രൊഡക്ടിന്റെ യൂണിക് സെല്ലിംഗ് പോയിന്റ് കണ്ടുപിടിക്കുക. കസ്റ്റമൈസേഷൻ വാഗ്ദാനം ചെയ്യുക.
+
+//       ഫിനാൻഷ്യൽ ടിപ്സ്
+      
+//         ബിസിനസ് വരുമാനവും വീട്ടുചിലവും വേർതിരിക്കുക
+//         എല്ലാ ട്രാൻസാക്ഷനുകളും റെക്കോർഡ് ചെയ്യുക
+//         ലാഭത്തിന്റെ 20% സേവിംഗ്സിനായി മാറ്റിവെക്കുക
+//         GST രജിസ്ട്രേഷൻ ആവശ്യമുണ്ടോ എന്ന് പരിശോധിക്കുക
+      
+
+//       ഡിജിറ്റൽ പ്രസൻസ്
+
+//       സോഷ്യൽ മീഡിയ സ്ട്രാറ്റജി
+      
+//         വാട്സാപ്പ്: പ്രധാന സെയിൽസ് ടൂൾ
+//         ഇൻസ്റ്റഗ്രാം: വിഷ്വൽ മാർക്കറ്റിംഗ്
+//         ഫേസ്ബുക്ക്: കമ്മ്യൂണിറ്റി ബിൽഡിംഗ്
+//         യൂട്യൂബ്: ട്യൂട്ടോറിയൽ വീഡിയോകൾ
+      
+
+//       വിജയത്തിനുള്ള മന്ത്രങ്ങൾ
+      
+//         ഉറക്കെ സ്വപ്നം കാണുക, പക്ഷേ ചെറുതായി തുടങ്ങുക
+//         കസ്റ്റമർ സാറ്റിസ്ഫാക്ഷൻ ആദ്യ പ്രാധാന്യം
+//         തുടർച്ചയായ പ്രയത്നം വിജയത്തിന്റെ താക്കോൽ
+//         പുതിയ കാര്യങ്ങൾ പഠിക്കാൻ തയ്യാറാവുക
+//         പരാജയത്തെ പാഠമായി കാണുക
+      
+
+//       സഹായ സ്രോതസ്സുകൾ
+      
+//         കുടുംബശ്രീ: വായ്പ സഹായവും പരിശീലനവും
+//         ബാങ്കുകൾ: മുദ്ര ലോൺ, സ്ത്രീ ശക്തി സ്കീമുകൾ
+//         ഓൺലൈൻ കോഴ്സുകൾ: ഡിജിറ്റൽ മാർക്കറ്റിംഗ് പഠിക്കാൻ
+//         ലോക്കൽ നെറ്റ്വർക്കുകൾ: ബിസിനസ് വിമൻ അസോസിയേഷനുകൾ
+      
+
+//       നിഗമനം
+//       കേരളത്തിലെ സ്ത്രീകൾക്ക് ഹോം ബിസിനസിലൂടെ സാമ്പത്തിക സ്വാതന്ത്ര്യം നേടാൻ കഴിയും. ആത്മവിശ്വാസവും കഠിനാധ്വാനവും കൊണ്ട് ഏത് സ്വപ്നവും സാധ്യമാക്കാം. ചെറിയ ഒരു തുടക്കം ഇന്നേ ഉണ്ടാക്കൂ!
+//     `,
+//     readTime: "8-10 min read",
+//     category: "Success Stories",
+//     date: "2025-01-03",
+//     image: "/blog-5.png",
+//     slug: "kerala-home-business-success",
+//     views: "1.9k",
+//     likes: 98,
+//     author: "വിജയ സുകുമാരൻ"
+//   },
+//   {
+//     id: 6,
+//     title: "Festival Season Selling: Maximize Your Kerala Store Revenue",
+//     description: "Complete playbook for Kerala sellers to boost sales during Onam, Vishu, Christmas and other festival seasons.",
+//     content: `
+//       Kerala's Festival Economy
+//       Kerala's festival seasons drive 40% of annual retail sales. From Onam's grandeur to Christmas celebrations, each festival presents unique opportunities for sellers to maximize revenue.
+
+//       Major Revenue Seasons
+      
+//         Onam (Aug-Sep): ₹15,000 crore market
+//         Christmas-New Year (Dec-Jan): ₹8,000 crore market
+//         Vishu (Apr): ₹5,000 crore market
+//         Easter (Mar-Apr): ₹3,000 crore market
+      
+
+//       Onam Strategy: The Big Winner
+//       Onam is Kerala's biggest shopping season. Sales typically increase 300-500% during this period.
+
+//       Pre-Onam Planning (July)
+      
+//         Inventory Planning: Stock up on sarees, jewelry, home decor
+//         Design Themes: Traditional Kerala motifs, gold colors
+//         Marketing Materials: Prepare Onam-specific graphics
+//         Supplier Coordination: Ensure timely delivery of festival items
+      
+
+      
+//         Onam Product Categories & Expected Sales Boost
+        
+//           Traditional Sarees: 400% increase
+//           Gold Jewelry: 350% increase
+//           Home Decor: 300% increase
+//           Traditional Snacks: 500% increase
+//           Pookalam Materials: 600% increase
+        
+      
+
+//       Onam Marketing Calendar
+      
+//         15 days before: Teaser posts, "Coming Soon" content
+//         10 days before: Launch Onam collection
+//         5 days before: Flash sales, limited time offers
+//         Day of Onam: Last-minute gift suggestions
+//         Post-Onam: Thank you posts, customer photos
+      
+
+//       Christmas & New Year Strategy
+//       Kerala's Christian community and secular celebrations make this the second-biggest shopping season.
+
+//       Product Focus Areas
+      
+//         Party Wear: Dresses, suits, accessories
+//         Gifts: Personalized items, gift hampers
+//         Home Decoration: Lights, stars, trees
+//         Food Items: Cakes, wine, special treats
+      
+
+//       Christmas Marketing Tactics
+      
+//         Gift Marketing Messages
+//         English: "Perfect Christmas gifts for your loved ones! Free gift wrapping with every purchase."
+//         Malayalam: "നിങ്ങളുടെ പ്രിയപ്പെട്ടവർക്കായി മനോഹരമായ ക്രിസ്മസ് സമ്മാനങ്ങൾ! എല്ലാ വാങ്ങലിനും സൗജന്യ ഗിഫ്റ്റ് റാപ്പിംഗ്."
+      
+
+//       Vishu Revenue Maximization
+//       Vishu represents new beginnings and is perfect for launching new product lines.
+
+//       Vishu-Specific Strategies
+      
+//         Vishukkani Products: Traditional items for the ritual
+//         New Clothes: Everyone buys new clothes for Vishu
+//         Gold Items: Small jewelry pieces, coins
+//         Books & Stationery: For students starting new academic year
+      
+
+//       Multi-Festival Content Strategy
+
+//       Content Types That Work
+      
+//         Festival History Posts: Share the significance of each festival
+//         Traditional vs Modern: Show how to blend tradition with contemporary style
+//         Styling Videos: How to drape a saree, style jewelry
+//         Behind-the-Scenes: Making traditional items, packaging gifts
+//         Customer Stories: How your products made their festival special
+      
+
+//       Festival-Specific Hashtags
+      
+//         Onam: #OnamCollection #KeralaTradition #OnamSarees #PookkalamSpecial
+//         Christmas: #ChristmasSpecial #KeralaChristmas #HolidayGifts #ChristmasInKerala
+//         Vishu: #VishuSpecial #NewBeginnings #VishuShopping #KeralaNewYear
+//         Easter: #EasterCollection #SpringFashion #EasterGifts #KeralaCelebration
+      
+
+//       Pricing Strategies for Festivals
+
+//       Dynamic Pricing Calendar
+      
+//         2 months before: Regular pricing
+//         1 month before: Early bird discounts (10-15%)
+//         2 weeks before: Standard festival pricing
+//         1 week before: Premium pricing (demand peaks)
+//         Day after festival: Clearance sales (30-50% off)
+      
+
+//       Bundle Strategies
+      
+//         Onam Bundle: Saree + Jewelry + Hair accessories
+//         Christmas Bundle: Dress + Shoes + Accessories
+//         Vishu Bundle: Traditional wear + Books + Gold coin
+//         Home Decor Bundle: Multiple items for complete setup
+      
+
+//       Inventory Management
+
+//       Festival Stock Planning
+      
+//         Onam Inventory Checklist
+        
+//           Traditional sarees: 50-100 pieces (various price ranges)
+//           Gold-plated jewelry: 20-30 sets
+//           Pookalam flowers: Fresh daily supply arranged
+//           Traditional brass items: 15-25 pieces
+//           Onam special food items: Pre-order based
+        
+      
+
+//       Customer Communication During Festivals
+
+//       WhatsApp Message Templates
+      
+//         Onam Greeting:
+//         "Happy Onam! 🌼 May this festival bring prosperity to your home. Check out our exclusive Onam collection - traditional sarees, jewelry, and home decor. Early bird discount 15% till [date]. WhatsApp us for catalog!"
+        
+//         Malayalam Version:
+//         "ഓണാശംസകൾ! 🌼 ഈ ഓണം നിങ്ങളുടെ വീട്ടിൽ സമൃദ്ധി കൊണ്ടുവരട്ടെ. ഞങ്ങളുടെ പ്രത്യേക ഓണ കളക്ഷൻ കാണുക - പരമ്പരാഗത സാരികൾ, ആഭരണങ്ങൾ, വീട് അലങ്കാരം. [തീയതി] വരെ 15% കിഴിവ്!"
+      
+
+//       Post-Festival Analysis
+      
+//         Track which products sold best
+//         Analyze customer feedback
+//         Calculate ROI for marketing spend
+//         Plan improvements for next year
+//         Build customer database for next festival season
+      
+
+//       Success Metrics to Track
+      
+//         Sales Volume: Units sold vs previous year
+//         Revenue Growth: Total revenue increase
+//         Customer Acquisition: New customers gained
+//         Repeat Purchase Rate: Customers who buy multiple items
+//         Average Order Value: Revenue per transaction
+      
+
+//       Year-Round Festival Preparation
+//       Smart Kerala sellers prepare for festivals throughout the year:
+      
+//         January: Plan for upcoming festivals
+//         March: Start Vishu preparations
+//         June: Begin Onam planning and sourcing
+//         October: Christmas inventory building
+//         December: Plan next year's festival calendar
+      
+
+//       Common Mistakes to Avoid
+      
+//         Starting festival marketing too late
+//         Underestimating demand and running out of stock
+//         Not having backup suppliers
+//         Ignoring regional preferences within Kerala
+//         Not preparing for post-festival sales
+      
+
+//       Conclusion
+//       Festival seasons in Kerala offer unparalleled opportunities for revenue growth. With proper planning, targeted marketing, and understanding of local culture, sellers can achieve 3-5x revenue growth during these periods. Start planning your next festival strategy today!
+//     `,
+//     readTime: "6-8 min read",
+//     category: "Seasonal Strategy",
+//     date: "2024-12-28",
+//     image: "/blog-6.png",
+//     slug: "festival-season-selling-kerala",
+//     views: "2.8k",
+//     likes: 167,
+//     author: "KeralaSellers Team"
+//   }
+];
+
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
+  const post = blogPosts.find(p => p.slug === params.slug);
+  const [likes, setLikes] = useState(post?.likes || 0);
+  const [isLiked, setIsLiked] = useState(false);
+  const [shareMenuOpen, setShareMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [copySuccess, setCopySuccess] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    // Check if user has liked this post before (using localStorage)
+    const likedPosts = JSON.parse(localStorage.getItem('likedPosts') || '[]');
+    setIsLiked(likedPosts.includes(post?.slug));
+  }, [post?.slug]);
+
+  if (!post) {
+    notFound();
+  }
+
+  const handleLike = () => {
+    const likedPosts = JSON.parse(localStorage.getItem('likedPosts') || '[]');
+    
+    if (isLiked) {
+      // Unlike
+      setLikes(likes - 1);
+      setIsLiked(false);
+      const updatedLikedPosts = likedPosts.filter((slug: string) => slug !== post.slug);
+      localStorage.setItem('likedPosts', JSON.stringify(updatedLikedPosts));
+    } else {
+      // Like
+      setLikes(likes + 1);
+      setIsLiked(true);
+      const updatedLikedPosts = [...likedPosts, post.slug];
+      localStorage.setItem('likedPosts', JSON.stringify(updatedLikedPosts));
+    }
+  };
+
+  const handleShare = async (platform?: string) => {
+    const shareData = {
+      title: post.title,
+      text: post.description,
+      url: window.location.href,
+    };
+
+    if (platform === 'copy') {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        setCopySuccess(true);
+        setTimeout(() => setCopySuccess(false), 2000);
+      } catch (err) {
+        console.error('Failed to copy link');
+      }
+      return;
+    }
+
+    if (platform === 'facebook') {
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareData.url)}`, '_blank');
+      return;
+    }
+
+    if (platform === 'twitter') {
+      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.title)}&url=${encodeURIComponent(shareData.url)}`, '_blank');
+      return;
+    }
+
+    if (platform === 'linkedin') {
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareData.url)}`, '_blank');
+      return;
+    }
+
+    // Native share (fallback)
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        console.error('Share failed');
+      }
+    } else {
+      setShareMenuOpen(true);
+    }
+  };
+
+  return (
+    <>
+      {/* Structured Data for Individual Blog Post */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: post.description,
+            image: `https://www.keralasellers.in${post.image}`,
+            datePublished: post.date,
+            dateModified: post.date,
+            author: {
+              "@type": "Person",
+              name: post.author
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "KeralaSellers.in",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://www.keralasellers.in/k-logo-removebg-preview.png"
+              }
+            },
+            mainEntityOfPage: `https://www.keralasellers.in/blog/${post.slug}`,
+            wordCount: post.content.split(' ').length,
+            inLanguage: post.title.includes('മലയാളം') || post.title.includes('കേരളത്തിലെ') ? 'ml' : 'en',
+          })
+        }}
+      />
+
+      <div className="min-h-screen bg-gradient-to-b from-[#fdfff0] to-white">
+        {/* Header */}
+        <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-green-100 shadow-sm">
+          <div className="container mx-auto px-4 py-3">
+            <div className="flex items-center justify-between">
+              <Link href="/" aria-label="Go to KeralaSellers Home" className="transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/k-logo-removebg-preview.png"
+                  alt="KeralaSellers.in"
+                  width={100}
+                  height={40}
+                  className="h-8 md:h-10 w-auto"
+                  priority
+                />
+              </Link>
+              <Link href="/blog">
+                <Button variant="outline" size="sm" className="border-green-600 text-green-700 hover:bg-green-50 transition-all duration-300 hover:scale-105 button-press">
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back to Blog
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </header>
+
+        {/* Article Header */}
+        <section className={`container mx-auto px-4 py-8 md:py-12 transition-all duration-1000 ${mounted ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`}>
+          <div className="max-w-4xl mx-auto">
+            <Link href="/blog" className="inline-flex items-center text-green-600 hover:text-green-700 mb-6 transition-all duration-300 hover:translate-x-1">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Blog
+            </Link>
+
+            <Badge variant="outline" className="mb-4 text-green-700 border-green-200 animate-fade-in">
+              {post.category}
+            </Badge>
+
+            <h1 className="text-2xl md:text-4xl font-bold text-gray-900 leading-tight mb-4 animate-fade-in-up">
+              {post.title}
+            </h1>
+
+            <p className="text-lg text-gray-600 mb-6 animate-fade-in-up" style={{animationDelay: '200ms'}}>
+              {post.description}
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-8 animate-fade-in-up" style={{animationDelay: '400ms'}}>
+              <div className="flex items-center gap-2">
+                <User className="w-4 h-4" />
+                <span>{post.author}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar className="w-4 h-4" />
+                <span>{new Date(post.date).toLocaleDateString('en-IN', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4" />
+                <span>{post.readTime}</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <span className="flex items-center gap-1">
+                  <TrendingUp className="w-4 h-4" />
+                  {post.views} views
+                </span>
+                <span className="flex items-center gap-1">
+                  <Heart className="w-4 h-4" />
+                  {likes}
+                </span>
+              </div>
+            </div>
+
+            {/* Featured Image */}
+            <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-xl mb-8 animate-fade-in-up group" style={{animationDelay: '600ms'}}>
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                priority
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Article Content */}
+        <article className="container mx-auto px-4 pb-12">
+          <div className="max-w-4xl mx-auto">
+           <div 
+  className="prose prose-lg max-w-none animate-fade-in-up px-4 md:px-0"
+  style={{animationDelay: '800ms'}}
+  dangerouslySetInnerHTML={{ __html: post.content }}
+/>
+
+
+            {/* Article Footer with Working Buttons */}
+            <div className="border-t border-gray-200 pt-8 mt-12 animate-fade-in-up" style={{animationDelay: '1000ms'}}>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={handleLike}
+                    className={`border-green-600 transition-all duration-300 button-press ${
+                      isLiked ? 'bg-green-50 text-green-700 border-green-700' : 'text-green-700 hover:bg-green-50'
+                    }`}
+                  >
+                    <Heart className={`w-4 h-4 mr-2 transition-all duration-300 ${isLiked ? 'fill-red-500 text-red-500' : ''}`} />
+                    {isLiked ? 'Liked' : 'Like'} ({likes})
+                  </Button>
+                  
+                  <div className="relative">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => handleShare()}
+                      className="border-green-600 text-green-700 hover:bg-green-50 transition-all duration-300 button-press"
+                    >
+                      <Share2 className="w-4 h-4 mr-2" />
+                      Share
+                    </Button>
+
+                    {shareMenuOpen && (
+                      <div className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 p-4 z-50 min-w-[200px] animate-fade-scale">
+                        <div className="flex justify-between items-center mb-3">
+                          <h4 className="font-semibold text-gray-900">Share Article</h4>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setShareMenuOpen(false)}
+                            className="p-1 h-auto"
+                          >
+                            <X className="w-4 h-4" />
+                          </Button>
+                        </div>
+                        <div className="space-y-2">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleShare('facebook')}
+                            className="w-full justify-start hover:bg-blue-50 transition-all duration-300"
+                          >
+                            <Facebook className="w-4 h-4 mr-2 text-blue-600" />
+                            Facebook
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleShare('twitter')}
+                            className="w-full justify-start hover:bg-blue-50 transition-all duration-300"
+                          >
+                            <Twitter className="w-4 h-4 mr-2 text-blue-500" />
+                            Twitter
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleShare('linkedin')}
+                            className="w-full justify-start hover:bg-blue-50 transition-all duration-300"
+                          >
+                            <Linkedin className="w-4 h-4 mr-2 text-blue-700" />
+                            LinkedIn
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleShare('copy')}
+                            className="w-full justify-start hover:bg-gray-50 transition-all duration-300"
+                          >
+                            <Copy className="w-4 h-4 mr-2 text-gray-600" />
+                            {copySuccess ? 'Copied!' : 'Copy Link'}
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="text-sm text-gray-500">
+                  Published by {post.author} on {new Date(post.date).toLocaleDateString()}
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Section */}
+            <Card className="mt-12 bg-gradient-to-r from-green-50 to-green-100 border-green-200 animate-fade-in-up group hover:shadow-lg transition-all duration-500" style={{animationDelay: '1200ms'}}>
+              <CardContent className="p-8 text-center">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-green-700 transition-colors duration-300">
+                  Ready to Start Your Kerala Business?
+                </h3>
+                <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                  Join thousands of successful Kerala sellers who are growing their businesses with zero commission. 
+                  Start your free store today!
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                  <Link href="/" className="flex-1">
+                    <Button className="w-full bg-green-600 hover:bg-green-700 transition-all duration-300 hover:scale-105 button-press">
+                      Start Selling Free
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
+                  <Link href="/yourstore" className="flex-1">
+                    <Button variant="outline" className="w-full border-green-600 text-green-700 hover:bg-green-50 transition-all duration-300 hover:scale-105 button-press">
+                      View Demo
+                    </Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </article>
+
+        {/* Related Articles */}
+        <section className="container mx-auto px-4 py-12 bg-gray-50">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center animate-fade-in-up">
+              Related Articles
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {blogPosts
+                .filter(p => p.id !== post.id)
+                .slice(0, 3)
+                .map((relatedPost, index) => (
+                  <Card key={relatedPost.id} className="group hover:shadow-lg transition-all duration-300 hover:scale-105 animate-fade-in-up" style={{animationDelay: `${1400 + index * 200}ms`}}>
+                    <div className="relative h-32 overflow-hidden">
+                      <Image
+                        src={relatedPost.image}
+                        alt={relatedPost.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    <CardContent className="p-4">
+                      <Badge variant="outline" className="text-xs text-green-700 border-green-200 mb-2">
+                        {relatedPost.category}
+                      </Badge>
+                      <h3 className="font-bold text-sm text-gray-900 mb-2 group-hover:text-green-600 transition-colors line-clamp-2">
+                        {relatedPost.title}
+                      </h3>
+                      <p className="text-xs text-gray-600 mb-3 line-clamp-2">
+                        {relatedPost.description}
+                      </p>
+                      <Link href={`/blog/${relatedPost.slug}`}>
+                        <Button variant="ghost" size="sm" className="w-full text-green-600 hover:bg-green-50 group/btn transition-all duration-300">
+                          Read More
+                          <ChevronRight className="w-3 h-3 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </Card>
+                ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-gray-900 text-white py-8 md:py-12">
+          <div className="container mx-auto px-4">
+            <div className="text-center">
+              <Image
+                src="/klogo.png"
+                alt="KeralaSellers Logo"
+                width={120}
+                height={60}
+                className="h-16 w-auto mx-auto mb-4 transition-transform duration-300 hover:scale-105"
+              />
+              <p className="text-gray-400 mb-4 max-w-md mx-auto">
+                Empowering Kerala's sellers with commission-free online stores.
+              </p>
+              <div className="text-sm text-gray-500">
+                © 2025 KeralaSellers.in • Made with ❤️ in Kerala
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+<style jsx>{`
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes fadeInUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+  
+  @keyframes fadeScale {
+    from { 
+      opacity: 0; 
+      transform: scale(0.95); 
+    }
+    to { 
+      opacity: 1; 
+      transform: scale(1); 
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
+  
+  .animate-fade-scale {
+    animation: fadeScale 0.3s ease-out;
+  }
+  
+  .button-press {
+    transition: transform 0.15s ease;
+  }
+  
+  .button-press:active {
+    transform: scale(0.95);
+  }
+  
+  /* Enhanced Prose Styling */
+  .prose {
+    color: #374151;
+    max-width: none;
+  }
+  
+  .prose h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .prose h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.3;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e5e7eb;
+  }
+  
+  .prose h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    line-height: 1.4;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .prose h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #374151;
+    line-height: 1.4;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .prose p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #4b5563;
+  }
+  
+  .prose ul, .prose ol {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+  
+  .prose li {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    color: #4b5563;
+  }
+  
+  .prose li strong {
+    color: #059669;
+    font-weight: 600;
+  }
+  
+  .prose strong {
+    color: #059669;
+    font-weight: 600;
+  }
+  
+  .prose em {
+    color: #6b7280;
+    font-style: italic;
+  }
+  
+  /* Enhanced Table Styling */
+  .prose table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: collapse;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .prose table th {
+    background-color: #f9fafb;
+    color: #374151;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .prose table td {
+    padding: 1rem;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 0.875rem;
+    color: #4b5563;
+  }
+  
+  .prose table tr:hover {
+    background-color: #f9fafb;
+  }
+  
+  /* Enhanced Blockquote/Highlighted Content */
+  .prose .bg-green-50,
+  .prose .bg-blue-50,
+  .prose .bg-yellow-50,
+  .prose .bg-red-50,
+  .prose .bg-gray-50,
+  .prose .bg-pink-50 {
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    margin: 2rem 0;
+    border-left: 4px solid #059669;
+  }
+  
+  .prose .bg-green-50 {
+    background-color: #f0fdf4;
+    border-left-color: #059669;
+  }
+  
+  .prose .bg-blue-50 {
+    background-color: #eff6ff;
+    border-left-color: #3b82f6;
+  }
+  
+  .prose .bg-yellow-50 {
+    background-color: #fefce8;
+    border-left-color: #eab308;
+  }
+  
+  .prose .bg-red-50 {
+    background-color: #fef2f2;
+    border-left-color: #ef4444;
+  }
+  
+  .prose .bg-gray-50 {
+    background-color: #f9fafb;
+    border-left-color: #6b7280;
+  }
+  
+  .prose .bg-pink-50 {
+    background-color: #fdf2f8;
+    border-left-color: #ec4899;
+  }
+  
+  .prose .bg-green-50 p,
+  .prose .bg-blue-50 p,
+  .prose .bg-yellow-50 p,
+  .prose .bg-red-50 p,
+  .prose .bg-gray-50 p,
+  .prose .bg-pink-50 p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+  
+  /* Code and Preformatted Text */
+  .prose code {
+    background-color: #f3f4f6;
+    color: #1f2937;
+    font-size: 0.875rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-family: 'Courier New', monospace;
+  }
+  
+  .prose pre {
+    background-color: #1f2937;
+    color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 2rem 0;
+  }
+  
+  /* Links */
+  .prose a {
+    color: #059669;
+    text-decoration: underline;
+    font-weight: 500;
+  }
+  
+  .prose a:hover {
+    color: #047857;
+    text-decoration: none;
+  }
+  
+  /* Spacing Improvements */
+  .prose > *:first-child {
+    margin-top: 0;
+  }
+  
+  .prose > *:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Line Clamping */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Responsive Typography */
+  @media (max-width: 768px) {
+    .prose h1 {
+      font-size: 1.875rem;
+    }
+    
+    .prose h2 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .prose h3 {
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    
+    .prose p,
+    .prose li {
+      font-size: 1rem;
+    }
+    
+    .prose table {
+      font-size: 0.75rem;
+    }
+    
+    .prose table th,
+    .prose table td {
+      padding: 0.75rem 0.5rem;
+    }
+  }
+  
+  /* Print Styles */
+  @media print {
+    .prose {
+      font-size: 12pt;
+      line-height: 1.5;
+    }
+    
+    .prose h1,
+    .prose h2,
+    .prose h3,
+    .prose h4 {
+      page-break-after: avoid;
+    }
+    
+    .prose table {
+      page-break-inside: avoid;
+    }
+  }
+  .blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.blog-card {
+  background: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.blog-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  aspect-ratio: 3/2;
+}
+
+.blog-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.blog-description {
+  flex-grow: 1;
+  font-size: 1rem;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.blog-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  color: #718096;
+  margin-bottom: 1rem;
+}
+
+.blog-footer {
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+  
+  .blog-image {
+    height: 180px;
+  }
+  
+  .blog-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-image {
+    height: 160px;
+  }
+}
+
+`}</style>
+    </>
+  );
+}

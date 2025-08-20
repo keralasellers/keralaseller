@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-
+import FollowUs from '@/components/FollowUs'
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.keralasellers.in'),
   
@@ -236,6 +236,8 @@ export default function RootLayout({
       </head>
       
       <body className="antialiased bg-[#fdfff0] text-gray-900">
+             <FollowUs />
+
         {children}
       </body>
     </html>

@@ -51,6 +51,7 @@ import {
   Plus,
   Minus,
   X,
+  BookOpen,
 
 } from "lucide-react"
 import { SlideCarousel } from "@/components/BannerCarousel"
@@ -198,29 +199,37 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaE
       <div className="min-h-screen bg-[#fdfff0]">
         {/* Header */}
         <header className="container mx-auto px-4 pt-5">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <Image 
-                src="/k-logo-removebg-preview.png" 
-                alt="KeralaSellers.in - Best platform to sell products online Kerala" 
-                width={120} 
-                height={60} 
-                className="h-12 w-auto"
-                priority 
-              />
-            </div>
-            <div className="flex items-center space-x-4">
-              <Badge variant="secondary" className="bg-green-100 text-green-800 border-green-200">
-                <Leaf className="w-3 h-3 mr-1" />
-                Coming Soon
-              </Badge>
-              <Badge variant="secondary" className="hidden md:inline-flex bg-green-100 text-green-800 border-green-200">
-                <MailCheck className="w-3 h-3 mr-1" />
-                adarsh@keralasellers.in
-              </Badge>
-            </div>
-          </div>
-        </header>
+  <div className="flex items-center justify-between">
+    <div className="flex items-center space-x-3">
+      <Image 
+        src="/k-logo-removebg-preview.png" 
+        alt="KeralaSellers.in - Best platform to sell products online Kerala" 
+        width={120} 
+        height={60} 
+        className="h-12 w-auto"
+        priority 
+      />
+    </div>
+    <div className="flex items-center space-x-3 md:space-x-4">
+      {/* Blog Navigation Button */}
+      <Link href="/blog">
+        <Button variant="ghost" size="sm" className="text-green-700 hover:bg-green-50 transition-all duration-300">
+          <BookOpen className="w-4 h-4 mr-2" />
+          <span className="hidden sm:inline">Blog</span>
+        </Button>
+      </Link>
+      
+      <Badge variant="secondary" className="bg-green-100 text-green-800 border-green-200">
+        <Leaf className="w-3 h-3 mr-1" />
+        Coming Soon
+      </Badge>
+      <Badge variant="secondary" className="hidden md:inline-flex bg-green-100 text-green-800 border-green-200">
+        <MailCheck className="w-3 h-3 mr-1" />
+        keralasellers.in@gmail.com
+      </Badge>
+    </div>
+  </div>
+</header>
 
         {/* Hero Carousel */}
         <SlideCarousel images={images} autoPlay={true} interval={4000} />
