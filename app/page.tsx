@@ -131,7 +131,24 @@ export default function ComingSoonPage() {
 
 const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
   const { name, value } = e.target
-  setFormData((prev) => ({ ...prev, [name]: value }))
+  
+  // Handle WhatsApp number input - only allow numbers
+  if (name === 'whatsapp') {
+    // Remove all non-digit characters
+    const phoneValue = value.replace(/\D/g, '')
+    
+    // Limit to 10 digits for Indian mobile numbers
+    const limitedPhone = phoneValue.slice(0, 10)
+    
+    setFormData((prev) => ({ ...prev, [name]: limitedPhone }))
+    
+    // Clear any validation errors on the input element
+    if (e.target instanceof HTMLInputElement) {
+      e.target.setCustomValidity('')
+    }
+  } else {
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
 }
 
 
@@ -293,17 +310,18 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaE
                             required
                             className="h-12"
                           />
-                          <Input
-                            type="tel"
-                            name="whatsapp"
-                            placeholder="WhatsApp Number"
-                            value={formData.whatsapp}
-                            onChange={handleInputChange}
-                            required
-                            pattern="\\d{10}"
-                            maxLength={10}
-                            className="h-12"
-                          />
+                         <Input
+  type="text"             // <- Change this
+  name="whatsapp"
+  placeholder="WhatsApp Number (10 digits)"  // <- More descriptive
+  value={formData.whatsapp}
+  onChange={handleInputChange}
+  required
+  maxLength={10}
+  pattern="[0-9]{10}"     // <- Add this for validation
+  inputMode="numeric"     // <- Add this for mobile keyboard
+  className="h-12"
+/>
                         </div>
                         <Input
                           type="text"
@@ -342,6 +360,34 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaE
             </div>
           </div>
         </section>
+
+    <section className="container mx-auto px-4 py-12">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            എന്താണ് കേരളസെല്ലേഴ്സ്? <span className="text-green-600">മലയാളത്തിൽ മനസ്സിലാക്കാം</span>
+          </h2>
+          <p className="text-lg text-gray-600">
+            What is KeralaSellers? Understanding in Malayalam for Easy Clarity
+          </p>
+        </div>
+        
+        <div className="aspect-video w-full">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/ggkqC6ALK_c?si=1FwbXIT1L7kTaz5O&autoplay=1&modestbranding=1&showinfo=0&controls=1&rel=0&loop=1&playlist=ggkqC6ALK_c"
+            title=""
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="rounded-lg"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
 
         {/* NEW: SEO-Optimized Target Keywords Section */}
         <section className="container mx-auto px-4 py-12">
@@ -973,180 +1019,164 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaE
           <Contact />
         </section>
 
-        {/* Footer */}<footer className="bg-gray-900 text-white py-12">
-  <div className="container mx-auto px-4">
-    <div className="grid md:grid-cols-4 gap-8 mb-8">
-      <div className="md:col-span-2">
-        <div className="flex items-center space-x-3 mb-4">
-          <Image
-            src="/klogo.png"
-            alt="KeralaSellers Logo - Best platform to sell products online in Kerala"
-            width={120}
-            height={60}
-            className="h-24 w-auto"
-          />
-        </div>
-        <p className="text-gray-400 mb-4 max-w-md">
-          Empowering Kerala's resellers with commission-free online stores. The best platform to sell products online in Kerala. 
-          Built by Keralites, for Keralites.
-        </p>
-        
-        {/* ✅ Added Corporate Backing */}
-        <div className="mb-4 p-3 bg-gray-800 rounded-lg border border-green-500">
-          <p className="text-sm text-green-400 font-medium">
-            🏢 Powered by Digital Product Solutions
-          </p>
-          <p className="text-xs text-gray-300">
-            Trusted by 500+ businesses • 7+ years expertise
-          </p>
-        </div>
+        {/* Footer */}
+        <footer className="bg-gray-900 text-white py-12">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-4 gap-8 mb-8">
+              <div className="md:col-span-2">
+                <div className="flex items-center space-x-3 mb-4">
+                  <Image
+                    src="/klogo.png"
+                    alt="KeralaSellers Logo - Best platform to sell products online in Kerala"
+                    width={120}
+                    height={60}
+                    className="h-24 w-auto"
+                  />
+                </div>
+                <p className="text-gray-400 mb-4 max-w-md">
+                  Empowering Kerala's resellers with commission-free online stores. The best platform to sell products online in Kerala. 
+                  Built by Keralites, for Keralites.
+                </p>
+                
+                <div className="mb-4 p-3 bg-gray-800 rounded-lg border border-green-500">
+                  <p className="text-sm text-green-400 font-medium">
+                    🏢 Powered by Digital Product Solutions
+                  </p>
+                  <p className="text-xs text-gray-300">
+                    Trusted by 500+ businesses • 7+ years expertise
+                  </p>
+                </div>
 
-        <div className="flex space-x-4">
-          <a href="https://www.instagram.com/kerala_sellers" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-            <Instagram className="w-6 h-6" />
-          </a>
-          <a href="tel:+919400355185" className="text-gray-400 hover:text-white transition-colors">
-            <Phone className="w-6 h-6" />
-          </a>
-          <a href="mailto:keralasellers.in@gmail.com" className="text-gray-400 hover:text-white transition-colors">
-            <Mail className="w-6 h-6" />
-          </a>
-          {/* ✅ Added LinkedIn for professional presence */}
-          <a href="https://www.linkedin.com/company/digital-product-adarsh" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-            <Linkedin className="w-6 h-6" />
-          </a>
-        </div>
-      </div>
+                <div className="flex space-x-4">
+                  <a href="https://www.instagram.com/kerala_sellers" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                    <Instagram className="w-6 h-6" />
+                  </a>
+                  <a href="tel:+919400355185" className="text-gray-400 hover:text-white transition-colors">
+                    <Phone className="w-6 h-6" />
+                  </a>
+                  <a href="mailto:keralasellers.in@gmail.com" className="text-gray-400 hover:text-white transition-colors">
+                    <Mail className="w-6 h-6" />
+                  </a>
+                  <a href="https://www.linkedin.com/company/digital-product-adarsh" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                    <Linkedin className="w-6 h-6" />
+                  </a>
+                </div>
+              </div>
 
-      <div>
-        <h4 className="font-semibold text-white mb-4">Quick Links</h4>
-        <ul className="space-y-2 text-gray-400">
-          <li>
-            <a href="#features" className="hover:text-white transition-colors">
-              Features
-            </a>
-          </li>
-          <li>
-            <a href="#how-it-works" className="hover:text-white transition-colors">
-              How It Works
-            </a>
-          </li>
-          <li>
-            <a href="#founders" className="hover:text-white transition-colors">
-              About Founders
-            </a>
-          </li>
-          <li>
-            <a href="#faq" className="hover:text-white transition-colors">
-              FAQ
-            </a>
-          </li>
-          {/* ✅ Added success stories */}
-          <li>
-            <a href="#success-stories" className="hover:text-white transition-colors">
-              Success Stories
-            </a>
-          </li>
-        </ul>
-      </div>
+              <div>
+                <h4 className="font-semibold text-white mb-4">Quick Links</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li>
+                    <a href="#features" className="hover:text-white transition-colors">
+                      Features
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#how-it-works" className="hover:text-white transition-colors">
+                      How It Works
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#founders" className="hover:text-white transition-colors">
+                      About Founders
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#faq" className="hover:text-white transition-colors">
+                      FAQ
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#success-stories" className="hover:text-white transition-colors">
+                      Success Stories
+                    </a>
+                  </li>
+                </ul>
+              </div>
 
-      {/* ✅ Enhanced Contact Section */}
-      <div>
-        <h4 className="font-semibold text-white mb-4">Contact Us</h4>
-        <ul className="space-y-2 text-gray-400">
-          <li className="flex items-center space-x-2">
-            <Mail className="w-4 h-4" />
-            <a href="mailto:keralasellers.in@gmail.com" className="hover:text-white transition-colors">
-              keralasellers.in@gmail.com
-            </a>
-          </li>
-          <li className="flex items-center space-x-2">
-            <Phone className="w-4 h-4" />
-            <a href="tel:+919400355185" className="hover:text-white transition-colors">
-              +91 94003 55185
-            </a>
-          </li>
-      
-          <li className="flex items-center space-x-2">
-            <MapPin className="w-4 h-4" />
-            <span>Kerala, India</span>
-          </li>
-          {/* ✅ Added business hours */}
-          <li className="flex items-center space-x-2">
-            <Clock className="w-4 h-4" />
-            <span className="text-sm">Mon-Sat: 9AM-7PM IST</span>
-          </li>
-        </ul>
-      </div>
+              <div>
+                <h4 className="font-semibold text-white mb-4">Contact Us</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li className="flex items-center space-x-2">
+                    <Mail className="w-4 h-4" />
+                    <a href="mailto:keralasellers.in@gmail.com" className="hover:text-white transition-colors">
+                      keralasellers.in@gmail.com
+                    </a>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <Phone className="w-4 h-4" />
+                    <a href="tel:+919400355185" className="hover:text-white transition-colors">
+                      +91 94003 55185
+                    </a>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <MapPin className="w-4 h-4" />
+                    <span>Kerala, India</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <Clock className="w-4 h-4" />
+                    <span className="text-sm">Mon-Sat: 9AM-7PM IST</span>
+                  </li>
+                </ul>
+              </div>
 
-      {/* ✅ Added Digital Solutions Section */}
-      <div>
-        <h4 className="font-semibold text-white mb-4">Our Ecosystem</h4>
-        <ul className="space-y-2 text-gray-400">
-          <li>
-            <a href="https://www.digitalproductsolutions.in" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">
-              🌐 Digital Product Solutions
-            </a>
-          </li>
-          <li className="text-sm">
-            🤖 AI-Powered Tools
-          </li>
-          <li className="text-sm">
-            📱 Custom SaaS Solutions
-          </li>
-          <li className="text-sm">
-            🎯 Meta Ads & PPC
-          </li>
-          <li className="text-sm">
-            📈 SEO Services
-          </li>
-          <li className="text-sm">
-            💬 Chatbot Integration
-          </li>
-        </ul>
-      </div>
-    </div>
+              <div>
+                <h4 className="font-semibold text-white mb-4">Our Ecosystem</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li>
+                    <a href="https://www.digitalproductsolutions.in" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">
+                      🌐 Digital Product Solutions
+                    </a>
+                  </li>
+                  <li className="text-sm">
+                    🤖 AI-Powered Tools
+                  </li>
+                  <li className="text-sm">
+                    📱 Custom SaaS Solutions
+                  </li>
+                  <li className="text-sm">
+                    🎯 Meta Ads & PPC
+                  </li>
+                  <li className="text-sm">
+                    📈 SEO Services
+                  </li>
+                  <li className="text-sm">
+                    💬 Chatbot Integration
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-    {/* ✅ Enhanced Trust Indicators */}
-    <div className="border-t border-gray-800 pt-8">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-        <div className="flex items-center space-x-6 mb-4 md:mb-0">
-          <div className="flex items-center space-x-2">
-            <Shield className="w-5 h-5 text-green-400" />
-            <span className="text-sm text-gray-300">Enterprise Security</span>
+            <div className="border-t border-gray-800 pt-8">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div className="flex items-center space-x-6 mb-4 md:mb-0">
+                  <div className="flex items-center space-x-2">
+                    <Shield className="w-5 h-5 text-green-400" />
+                    <span className="text-sm text-gray-300">Enterprise Security</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Zap className="w-5 h-5 text-green-400" />
+                    <span className="text-sm text-gray-300">99.9% Uptime</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Users className="w-5 h-5 text-green-400" />
+                    <span className="text-sm text-gray-300">500+ Businesses Trust Us</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <p className="text-lg font-medium text-green-400 mb-2">🚀 Launching Soon in Kerala</p>
+                <p className="text-gray-500 text-sm mb-2">
+                  © 2025 KeralaSellers.in • A Digital Product Solutions Initiative • Made with ❤️ in God's Own Country
+                </p>
+                <p className="text-xs text-gray-600">
+                  Professional e-commerce solutions backed by 7+ years of digital expertise
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <Zap className="w-5 h-5 text-green-400" />
-            <span className="text-sm text-gray-300">99.9% Uptime</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Users className="w-5 h-5 text-green-400" />
-            <span className="text-sm text-gray-300">500+ Businesses Trust Us</span>
-          </div>
-        </div>
-        
-        {/* <div className="flex items-center space-x-4">
-          <a href="/privacy" className="text-sm text-gray-400 hover:text-white transition-colors">
-            Privacy Policy
-          </a>
-          <a href="/terms" className="text-sm text-gray-400 hover:text-white transition-colors">
-            Terms of Service
-          </a>
-        </div> */}
-      </div>
-
-      <div className="text-center">
-        <p className="text-lg font-medium text-green-400 mb-2">🚀 Launching Soon in Kerala</p>
-        <p className="text-gray-500 text-sm mb-2">
-          © 2025 KeralaSellers.in • A Digital Product Solutions Initiative • Made with ❤️ in God's Own Country
-        </p>
-        <p className="text-xs text-gray-600">
-          Professional e-commerce solutions backed by 7+ years of digital expertise
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
+        </footer>
 
       </div>
     </>
